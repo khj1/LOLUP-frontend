@@ -1,95 +1,100 @@
 @import url("https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap");
 
+.nav__logo {
+  font-family: "Racing Sans One", cursive;
+  font-size: 3em;
+  margin-top: 0.25em;
+}
+
 .logo {
   font-family: "Racing Sans One", cursive;
   font-size: 3em;
 }
 
-.logo > span {
+.logo > span,
+.nav__logo > span {
   color: red;
 }
 
 .nav {
-    position: sticky;
-    width: 100%;
-    padding-top: 0.1em;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    background-color: #F5dF4D;
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.05);
-    z-index: 9999 !important;
-  }
-  
-  .nav a {
-    text-decoration: none;
-    color: black;
-    text-transform: uppercase;
-    font-size: 1.1em;
-    text-align: center;
-    font-weight: 600;
-  }
-  
-  .nav a:not(:last-child) {
-    margin-bottom: 20px;
-  }
+  position: sticky;
+  width: 100%;
+  height: 10vh;
+  /* padding-top: 0.1em; */
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  background-color: #f5df4d;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.05);
+  z-index: 9999 !important;
+}
 
-  [type=search] {
-    outline-offset: -2px;
-    -webkit-appearance: none;
-    width: 400px;
-  }
-  
-  .top-search-area { 
-    padding: 3em;
-    display: inline-block;
-    text-align: center;
-  }
+.nav a {
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
+  font-size: 1.1em;
+  text-align: center;
+  font-weight: 600;
+}
 
-  ul {list-style:none;}
+.nav a:not(:last-child) {
+  margin-bottom: 20px;
+}
 
-  .sideMenu {
-    padding: 3em;
-    display: inline-block;
-    text-align: center;
-  }
+[type="search"] {
+  outline-offset: -2px;
+  -webkit-appearance: none;
+  width: 400px;
+}
 
-  
-  .menu{
-    flex-direction: row;
-    text-align: center;
-  }
+.top-search-area {
+  padding: 2em;
+  display: inline-block;
+  text-align: center;
+}
 
+ul {
+  list-style: none;
+}
 
+.sideMenu {
+  padding: 2em;
+  display: inline-block;
+  text-align: center;
+}
+
+.menu {
+  flex-direction: row;
+  text-align: center;
+}
 
 .menu-list a {
-	display: inline-flexbox;
-  padding: 2.5em;
-	color: black;
-	position: relative;
-	font-family: "Roboto", sans-serif;
-	font-size: 15px;
+  display: inline-flexbox;
+  padding: 1.5em 2em;
+  color: black;
+  position: relative;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
   font-weight: bold;
-	letter-spacing: 0.09em;
-	-webkit-transition: all 0.4s ease 0s;
-	-o-transition: all 0.4s ease 0s;
-	transition: all 0.4s ease 0s;
+  letter-spacing: 0.09em;
+  -webkit-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
   float: right;
-	
 }
 
 .menu-list li a:hover,
 .menu-list li a.active {
-	color: brown;
-	background-color: whitesmoke;
+  color: brown;
+  background-color: whitesmoke;
 }
- .menu-list li:last-child a {
-	float: left;
-	margin-right: 10;
+.menu-list li:last-child a {
+  float: left;
+  margin-right: 10;
 }
 
 .header-section .menu-list .current a:after {
-	width: 10px;
-	margin-left: -5px;
+  width: 10px;
+  margin-left: -5px;
 }
-

@@ -1,13 +1,4 @@
-import {
-  Avatar,
-  Button,
-  Grid,
-  Paper,
-  TextField,
-  Link,
-  Typography,
-  Icon,
-} from "@material-ui/core";
+import { Button, Grid, Paper, Typography } from "@material-ui/core";
 import React, { Component } from "react";
 import "./Login02.css";
 
@@ -15,13 +6,9 @@ class Login02 extends Component {
   render() {
     const paperStyle = {
       padding: 30,
-      height: "60vh",
-      width: 400,
-      margin: "50 auto",
-    };
-
-    const btnStyle = {
-      margin: "20px 0 5px 0",
+      height: "30vh",
+      width: 300,
+      margin: "auto",
     };
 
     const kakaoBtnStyle = {
@@ -41,31 +28,6 @@ class Login02 extends Component {
             </h1>
           </Grid>
           <form>
-            <TextField
-              id="id"
-              label="ID"
-              placeholder="Enter User ID"
-              fullWidth
-              required
-            />
-            <TextField
-              id="pw"
-              label="Password"
-              placeholder="Enter User Password"
-              type="password"
-              fullWidth
-              required
-            />
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              style={btnStyle}
-              fullWidth
-            >
-              Sign in
-            </Button>
-            <Typography align="center">or</Typography>
             <Button
               type="submit"
               variant="contained"
@@ -75,6 +37,8 @@ class Login02 extends Component {
             >
               Sign in with KAKAO
             </Button>
+
+            <Typography align="center">or</Typography>
             <Button
               type="submit"
               variant="contained"
@@ -85,18 +49,6 @@ class Login02 extends Component {
               Sign in with Google
             </Button>
           </form>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
         </Paper>
       </Grid>
     );

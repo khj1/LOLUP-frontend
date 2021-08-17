@@ -1,12 +1,14 @@
-.element{
+.element {
   position: sticky;
-    width: 100%;
-    margin-top: 5em; /*임의로*/
-    padding-top: 0.1em;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    background-color: #F5dF4D;
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.05);
-    z-index: 9999 !important;
+  width: 100%;
+  margin-top: 5em; /*임의로*/
+  padding-top: 0.1em;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  background-color: #f5df4d;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.05);
+  z-index: 9999 !important;
 }
