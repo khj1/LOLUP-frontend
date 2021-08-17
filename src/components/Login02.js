@@ -9,9 +9,9 @@ import {
   Icon,
 } from "@material-ui/core";
 import React, { Component } from "react";
-import "./Login.css";
+import "./Login02.css";
 
-class Login extends Component {
+class Login02 extends Component {
   render() {
     const paperStyle = {
       padding: 30,
@@ -103,4 +103,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Login02;
