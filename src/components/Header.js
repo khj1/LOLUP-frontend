@@ -1,11 +1,14 @@
 import React from "react";
+import { MdSearch, MdMenu } from 'react-icons/md';
 import { Link } from "react-router-dom";
-import "./Header.css";
+import "./Header.css"; 
+import '@trendmicro/react-sidenav/dist/react-sidenav.css'; 
+
 
 function Header() {
   return (
     <div className="nav">
-      <Link to="/duo">
+      <Link to="/">
         <h1 className="nav__logo">
           LOL<span>UP</span>
         </h1>
@@ -16,10 +19,11 @@ function Header() {
           <label>
             <input
               type="text"
-              name="name"
+              name="search"
               placeholder="소환사를 검색해보세요."
             />
           </label>
+          <MdSearch fontSize="large" /> {/* 클릭 시 현재는 동작 X */}
           <input type="submit" value="검색" />
         </form>
       </div>
@@ -34,9 +38,11 @@ function Header() {
 
       <div class="sideMenu">
         <section>
-          <button id="showRight">메뉴</button>
+          <button id="showRight" onClick="">메뉴</button>
+          <MdMenu fontSize="large" />
         </section>
       </div>
+
     </div>
   );
 }
