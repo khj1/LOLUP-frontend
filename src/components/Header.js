@@ -1,13 +1,16 @@
 import React from "react";
-import { MdSearch, MdMenu } from 'react-icons/md';
 import { Link } from "react-router-dom";
-import "./Header.css"; 
-import '@trendmicro/react-sidenav/dist/react-sidenav.css'; 
-
+import "./Header.css";
+import "@trendmicro/react-sidenav/dist/react-sidenav.css";
+import IconButton from "@material-ui/core/IconButton";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import SearchIcon from "@material-ui/icons/Search";
+import TextField from "@material-ui/core/TextField";
+import Sidemenu from "./Sidemenu";
 
 function Header() {
   return (
-    <div className="nav">
+    <div className="nav" id="outer-container">
       <Link to="/">
         <h1 className="nav__logo">
           LOL<span>UP</span>
@@ -16,15 +19,18 @@ function Header() {
 
       <div className="top-search-area">
         <form>
-          <label>
-            <input
-              type="text"
-              name="search"
-              placeholder="소환사를 검색해보세요."
-            />
-          </label>
-          <MdSearch fontSize="large" /> {/* 클릭 시 현재는 동작 X */}
-          <input type="submit" value="검색" />
+          <TextField
+            label="&nbsp;&nbsp;&nbsp;&nbsp;소환사를 검색해보세요"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment>
+                  <IconButton>
+                    <SearchIcon />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
         </form>
       </div>
 
@@ -35,14 +41,30 @@ function Header() {
           <Link to="/login">로그인</Link>
         </li>
       </ul>
-
-      <div class="sideMenu">
-        <section>
-          <button id="showRight" onClick="">메뉴</button>
-          <MdMenu fontSize="large" />
-        </section>
+      <div>
+        <Sidemenu outerContainerId={"outer-container"} />
       </div>
 
+      {/* <div class="sideMenu">
+        <Button
+          aria-controls="simple-menu"
+          aria-haspopup="true"
+          onClick={handleClick}
+        >
+          Open Menu
+        </Button>
+        <Menu
+          id="simple-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={handleClose}>Profile</MenuItem>
+          <MenuItem onClick={handleClose}>My account</MenuItem>
+          <MenuItem onClick={handleClose}>Logout</MenuItem>
+        </Menu>
+      </div> */}
     </div>
   );
 }

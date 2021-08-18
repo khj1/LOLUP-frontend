@@ -6,7 +6,7 @@ class Login02 extends Component {
   render() {
     const paperStyle = {
       padding: 30,
-      height: "30vh",
+      height: "35vh",
       width: 300,
       margin: "auto",
     };
