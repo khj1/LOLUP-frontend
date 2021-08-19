@@ -34,16 +34,16 @@
 }
 
 .bm-menu {
-  background: #373a47;
+  background: #939597; /*색상 변경*/
   padding: 2.5em 1.5em 0;
-  font-size: 1.15em;
+  font-size: 1.15em; 
 }
 
 .bm-morph-shape {
   fill: #373a47;
 }
 
-.bm-item-list {
+.bm-item-list { 
   color: #b8b7ad;
 }
 

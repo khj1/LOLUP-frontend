@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import "@fortawesome/fontawesome-free/js/all.js";
+import 'bootstrap/dist/css/bootstrap.min.css'; /* 추가 */
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
