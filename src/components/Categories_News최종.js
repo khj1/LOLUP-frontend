@@ -4,27 +4,31 @@ import styled, { css } from 'styled-components';
 const categories = [
     {
         name: 'all',
-        text: '전체보기' /* 이 항목 뺄지말지 결정 */
+        text: '전체보기'
     },
     {
-        name: 'jungle',
-        text: '정글'
+        name: 'business',
+        text: '비즈니스'
     },
     {
-        name: 'top',
-        text: '탑'
+        name: 'entertainment',
+        text: '연예'
     },
     {
-        name: 'mid',
-        text: '미드'
+        name: 'health',
+        text: '건강'
     },
     {
-        name: 'longD',
-        text: '원딜(원거리딜러)'
+        name: 'science',
+        text: '과학'
     },
     {
-        name: 'support',
-        text: '서포트'
+        name: 'sports',
+        text: '스포츠'
+    },
+    {
+        name: 'technology',
+        text: '기술'
     }
 ];
 

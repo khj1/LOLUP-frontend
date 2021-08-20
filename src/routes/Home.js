@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
-import NewsList from '../components/NewsList';
 import Categories from '../components/Categories';
+import TestList from '../components/TestList';
 
 /* React Router 적용 X >> useState로 관리 */
 
@@ -11,7 +11,7 @@ const Home = () => {
     return (
         <>
             <Categories category={category} onSelect={onSelect} />
-            <NewsList category={category} />
+            <TestList category={category} />
         </>
     );
 };
