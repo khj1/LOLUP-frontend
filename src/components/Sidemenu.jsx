@@ -4,6 +4,7 @@ import { Dropdown } from 'bootstrap';
 import React, { Component } from "react";
 import { slide as Menu } from "react-burger-menu";
 import "./Sidemenu.css";
+import CustomToggle from './CustomToggle';
 
 export default (props) => {
   return (
@@ -15,7 +16,9 @@ export default (props) => {
         <Dropdown.Item>Action2</Dropdown.Item>
         <Dropdown.Item>Action3</Dropdown.Item>
       </DropdownButton>
- 
+
+      <CustomToggle/>
+
       <a className="menu-item" href="/about">친구</a>
     </Menu>
   );

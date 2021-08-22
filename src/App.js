@@ -16,7 +16,6 @@ return (
     <Route path="/" exact={true} component={Home} />
     <Route path="/duo" exact={true} component={Duo} />
     <Route path="/freeRank" exact={true} component={FreeRank} />
-    {/*<div className="content">반가워요! 저는 내용이 출력될 메인 페이지예요.</div>*/}
     </>
     <Route path="/login" exact={true} component={Login01} />
     <Footer />
