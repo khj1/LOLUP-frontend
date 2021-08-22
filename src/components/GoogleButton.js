@@ -1,6 +1,6 @@
 import React from "react";
 import GoogleLogin from "react-google-login";
-import { Button } from "@material-ui/core";
+import "./GoogleButton.css";
 
 const clientId = "OAuth Web Client ID";
 
@@ -31,23 +31,11 @@ export default function GoogleButton({ onSocial }) {
 
   // clientId에 개발자의 google client ID를 발급받아서 입력하면 됩니다.
   return (
-    <div>
+    <div className="googleDiv">
       <GoogleLogin
         clientId="502724775539-7t5k5f59qia4q7nthdnvtj288va8vepi.apps.googleusercontent.com"
-        render={(renderProps) => (
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            onClick={renderProps.onClick}
-            disabled={renderProps.disabled}
-            style={googleBtnStyle}
-            fullWidth
-          >
-            Sign in with Google
-          </Button>
-        )}
-        buttonText="Login"
+        className="googleBtnStyle"
+        buttonText="Sign in with Google"
         responseType={"id_token"}
         onSuccess={onSuccess}
         onFailure={onFailure}

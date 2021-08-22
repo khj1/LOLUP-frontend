@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import GoogleButton from "./GoogleButton";
 import "./Login02.css";
 import NaverLogin from "./NaverLogin";
+import KakaoLogin from "./KakaoLogin";
 
 class Login02 extends Component {
   render() {
@@ -26,18 +27,11 @@ class Login02 extends Component {
             </h1>
           </Grid>
           <form>
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              style={kakaoBtnStyle}
-              fullWidth
-            >
-              Sign in with KAKAO
-            </Button>
-
-            <GoogleButton />
-            <NaverLogin />
+            <div className="buttonStyle">
+              <KakaoLogin />
+              <GoogleButton />
+              <NaverLogin />
+            </div>
           </form>
         </Paper>
       </Grid>
