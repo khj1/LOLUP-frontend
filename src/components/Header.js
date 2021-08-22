@@ -6,7 +6,7 @@ import IconButton from "@material-ui/core/IconButton";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchIcon from "@material-ui/icons/Search";
 import TextField from "@material-ui/core/TextField";
-import Sidemenu from "./Sidemenu"; 
+import Sidemenu from "./Sidemenu";
 
 function Header() {
   return (
@@ -37,7 +37,7 @@ function Header() {
       <ul className="menu-list">
         <li>
           <Link to="/duo">듀오</Link>
-          <Link to="/freeRank">자유랭크</Link>
+          {/* <Link to="/freeRank">자유랭크</Link> */}
           <Link to="/login">로그인</Link>
         </li>
       </ul>
