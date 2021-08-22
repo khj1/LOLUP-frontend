@@ -1,5 +1,6 @@
-import { Button, Grid, Paper, Typography } from "@material-ui/core";
+import { Button, Grid, Paper } from "@material-ui/core";
 import React, { Component } from "react";
+import GoogleButton from "./GoogleButton";
 import "./Login02.css";
 
 class Login02 extends Component {
@@ -15,8 +16,8 @@ class Login02 extends Component {
       margin: "5px 0",
     };
 
-    const googleBtnStyle = {
-      margin: "5px 0 20px 0",
+    const naverBtnStyle = {
+      margin: "5px 0 ",
     };
 
     return (
@@ -38,15 +39,15 @@ class Login02 extends Component {
               Sign in with KAKAO
             </Button>
 
-            <Typography align="center">or</Typography>
+            <GoogleButton />
             <Button
               type="submit"
               variant="contained"
               color="primary"
-              style={googleBtnStyle}
+              style={naverBtnStyle}
               fullWidth
             >
-              Sign in with Google
+              Sign in with NAVER
             </Button>
           </form>
         </Paper>
