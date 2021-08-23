@@ -13,6 +13,7 @@ export class DuoList extends Component {
     blists: [],
     pageduoId: 1
   };
+
   componentDidMount() {
     fetch("http://lolup-api.p-e.kr/duo?position=ALL&tier=ALL")
       .then(function (result) {
@@ -26,7 +27,32 @@ export class DuoList extends Component {
       );
   }
 
+  
+
   render() {
+    const timeForToday = (value) => {
+      const today = new Date();
+      const timeValue = new Date(value);
+
+      const betweenTime = Math.floor((today.getTime() - timeValue.getTime()) / 1000 / 60);
+      if (betweenTime < 1) return '방금전';
+      if (betweenTime < 60) {
+          return `${betweenTime}분전`;
+      }
+  
+      const betweenTimeHour = Math.floor(betweenTime / 60);
+      if (betweenTimeHour < 24) {
+          return `${betweenTimeHour}시간전`;
+      }
+  
+      const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
+      if (betweenTimeDay < 365) {
+          return `${betweenTimeDay}일전`;
+      }
+  
+      return `${Math.floor(betweenTimeDay / 365)}년전`;
+    }
+
     const StyledTableCell = withStyles((theme) => ({
       head: {
         backgroundColor: theme.palette.common.black,
@@ -49,14 +75,15 @@ export class DuoList extends Component {
     const rows = [];
     for (let i = 0; i < this.state.blists.length; i++) {
       let row = this.state.blists[i];
+
       rows.push({
-        key: row.duoId,
+        most: row.most3,
         summonerName: row.summonerName,
         position: row.position,
         tier: row.tier,
         latestWinRate: row.latestWinRate,
         desc: row.desc,
-        postDate: row.postDate
+        postDate: timeForToday(row.postDate)
       });
     }
     return (
@@ -91,7 +118,14 @@ export class DuoList extends Component {
                   <StyledTableCell align="center">
                     {row.latestWinRate}
                   </StyledTableCell>
-                  <StyledTableCell align="center">{row.desc}</StyledTableCell>
+                    
+                  <StyledTableCell align="center">
+                    {row.most.map((info) => {
+                      const imgUrl = "http://ddragon.leagueoflegends.com/cdn/11.16.1/img/champion/"+ info.name + ".png";
+                      return <img src={imgUrl} width="50px"/>;
+                    })}
+                  </StyledTableCell>
+                 
                   <StyledTableCell align="center">{row.desc}</StyledTableCell>
                   <StyledTableCell align="center">
                     {row.postDate}

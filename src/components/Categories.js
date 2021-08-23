@@ -3,27 +3,27 @@ import styled, { css } from 'styled-components';
 
 const categories = [
     {
-        name: 'all',
+        name: 'ALL',
         text: '전체보기' /* 이 항목 뺄지말지 결정 */
     },
     {
-        name: 'jungle',
+        name: 'JUG',
         text: '정글'
     },
     {
-        name: 'top',
+        name: 'TOP',
         text: '탑'
     },
     {
-        name: 'mid',
+        name: 'MID',
         text: '미드'
     },
     {
-        name: 'longD',
-        text: '원딜(원거리딜러)'
+        name: 'BOT',
+        text: '원딜'
     },
     {
-        name: 'support',
+        name: 'SUP',
         text: '서포트'
     }
 ];
