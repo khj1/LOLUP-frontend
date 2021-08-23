@@ -17,27 +17,10 @@ function Header() {
         </h1>
       </Link>
 
-      <div className="top-search-area">
-        <form>
-          <TextField
-            label="&nbsp;&nbsp;&nbsp;&nbsp;소환사를 검색해보세요"
-            InputProps={{
-              endAdornment: (
-                <InputAdornment>
-                  <IconButton>
-                    <SearchIcon />
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
-        </form>
-      </div>
-
       <ul className="menu-list">
         <li>
           <Link to="/duo">듀오</Link>
-          {/* <Link to="/freeRank">자유랭크</Link> */}
+          <Link to="/freeRank">팀</Link>
           <Link to="/login">로그인</Link>
         </li>
       </ul>

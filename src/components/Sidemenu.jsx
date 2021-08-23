@@ -1,25 +1,37 @@
-import 'bootstrap/dist/css/bootstrap.min.css'; 
-import { DropdownButton } from 'react-bootstrap';
-import { Dropdown } from 'bootstrap';
-import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import IconButton from "@material-ui/core/IconButton";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import SearchIcon from "@material-ui/icons/Search";
+import TextField from "@material-ui/core/TextField";
+import React from "react";
 import { slide as Menu } from "react-burger-menu";
 import "./Sidemenu.css";
-import CustomToggle from './CustomToggle';
 
 export default (props) => {
   return (
-    <Menu right {...props}>
-      <a className="menu-item" href="/about">팀</a>
+    <>
+      <Menu right {...props}>
+        <div className="top-search-area">
+          <form>
+            <TextField
+              label="&nbsp;&nbsp;&nbsp;&nbsp;소환사를 검색해보세요"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment>
+                    <IconButton>
+                      <SearchIcon />
+                    </IconButton>
+                  </InputAdornment>
+                )
+              }}
+            />
+          </form>
+        </div>
 
-      <DropdownButton id="dropdown-basic-button" title="Dropdown button">
-        <Dropdown.Item>Action1</Dropdown.Item>
-        <Dropdown.Item>Action2</Dropdown.Item>
-        <Dropdown.Item>Action3</Dropdown.Item>
-      </DropdownButton>
+        <Link to="/duo">듀오</Link>
 
-      <CustomToggle/>
-
-      <a className="menu-item" href="/about">친구</a>
-    </Menu>
+        <Link to="/freeRank">팀</Link>
+      </Menu>
+    </>
   );
 };
