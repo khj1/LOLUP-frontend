@@ -32,7 +32,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "sync": "aws s3 sync ./build s3://lolup-react-bucket --profile khj1",
-    "invalidation":"aws cloudfront create-invalidation  --profile khj1 --distribution-id E2IWCMFALSRZG9 --paths /*",
+    "invalidation": "aws cloudfront create-invalidation  --profile khj1 --distribution-id E2IWCMFALSRZG9 --paths /*",
     "deploy": "yarn build && yarn sync && yarn invalidation"
   },
   "eslintConfig": {

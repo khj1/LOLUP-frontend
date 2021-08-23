@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import styled from 'styled-components';
 import KakaoBtn from "react-kakao-login";
 
 class KakaoLogin extends Component {
@@ -10,7 +11,7 @@ class KakaoLogin extends Component {
           onSuccess={console.log}
           onFail={console.error}
           onLogout={console.info}
-          style={{
+          styled={{
             width: "180px",
             padding: "10px",
             marginLeft: "30px",
