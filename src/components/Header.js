@@ -17,6 +17,7 @@ function Header() {
         </h1>
       </Link>
 
+      
       <ul className="menu-list">
         <li>
           <Link to="/duo">듀오</Link>
