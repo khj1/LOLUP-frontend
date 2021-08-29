@@ -1,25 +1,24 @@
 import React, { Fragment } from "react";
-import { HashRouter, Route } from "react-router-dom";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Home from "./routes/Home";
-import Duo from "./routes/Duo";
-import FreeRank from "./routes/FreeRank";
-import Login01 from "./components/Login01";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import Header from "./components/fragments/Header";
+import Footer from "./components/fragments/Footer";
+import Auth from './hoc/auth';
+import Duo from "./components/views/Duo";
+import Team from "./components/views/Team"
+import Login01 from "./components/views/Login01";
 import "./App.css";
 
 function App() {
   return (
-    <HashRouter>
-      <>
-        <Header />
-        <Route path="/" exact={true} component={Home} />
-        <Route path="/duo" exact={true} component={Duo} />
-        <Route path="/freeRank" exact={true} component={FreeRank} />
-      </>
-      <Route path="/login" exact={true} component={Login01} />
-      {/*<button onClick={() => window.open('/login', '_self')}>[로그인]</button>*/}
-    </HashRouter>
+    <Router>
+      <Header />
+      <Switch>
+        <Route exact path="/" component={Auth(Duo, null)} />
+        <Route exact path="/duo" component={Auth(Duo, null)} />
+        <Route exact path="/team" component={Auth(Team, null)} />
+        <Route exact path="/login" component={Auth(Login01, false)} />
+      </Switch>
+    </Router>
   );
 }
 
