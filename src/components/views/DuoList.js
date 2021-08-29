@@ -8,6 +8,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import Scroll from "./Scroll";
 
 import Moment from "react-moment";
 import 'moment/locale/ko';
@@ -87,6 +88,7 @@ export class DuoList extends Component {
                 <StyledTableCell align="center">선호챔피언</StyledTableCell>
                 <StyledTableCell align="center">한줄소개</StyledTableCell>
                 <StyledTableCell align="center">등록날짜</StyledTableCell>
+                <Scroll/>
               </TableRow>
             </TableHead>
             <TableBody>
