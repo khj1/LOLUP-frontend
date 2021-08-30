@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import './Scroll.css';
+import '../../css/Scroll.css';
 
 function Scroll() {
 

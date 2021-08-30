@@ -1,10 +1,14 @@
 import { combineReducers } from "redux";
 import user from './user_reducer';
-import app from "./application_reducer";
+import auth from "./auth_reducer";
+import position from "./position_reducers";
+import tier from "./tier_reducer";
 
 const rootReducer = combineReducers({
     user,
-    app
+    auth,
+    position,
+    tier
 })
 
 export default rootReducer;

@@ -7,14 +7,10 @@ import "../../css/Login02.css";
 class Login02 extends Component {
   render() {
     const paperStyle = {
+      width: 440,
       padding: 30,
-      height: "35vh",
-      width: 300,
+      height: "400px",
       margin: "auto",
-    };
-
-    const kakaoBtnStyle = {
-      margin: "5px 0",
     };
 
     return (
@@ -25,12 +21,8 @@ class Login02 extends Component {
               LOL<span>UP</span>
             </h1>
           </Grid>
-          <form>
-            <div className="buttonStyle">
-              <KakaoLogin />
-              <GoogleLogin />
-            </div>
-          </form>
+          <KakaoLogin />
+          <GoogleLogin />
         </Paper>
       </Grid>
     );
