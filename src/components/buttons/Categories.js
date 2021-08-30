@@ -1,37 +1,47 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { setPosition } from '../../_actions/userAction';
 import styled, { css } from 'styled-components';
 
 const categories = [
-    {
+    {   
         name: 'ALL',
-        text: '전체보기' /* 이 항목 뺄지말지 결정 */
-    },
-    {
-        name: 'JUG',
-        text: '정글'
+        text: '전체라인', 
+        menu_img : 'ALL.png' 
     },
     {
         name: 'TOP',
-        text: '탑'
+        text: '탑', 
+        menu_img : 'TOP.png' 
+    },
+    {
+        name: 'JUG',
+        text: '정글', 
+        menu_img : 'JUG.png' 
     },
     {
         name: 'MID',
-        text: '미드'
+        text: '미드',
+        menu_img : 'MID.png' 
     },
     {
         name: 'BOT',
-        text: '원딜'
+        text: '원딜', 
+        menu_img : 'BOT.png' 
     },
     {
         name: 'SUP',
-        text: '서포트'
+        text: '서포트', 
+        menu_img : 'SUP.png' 
     }
 ];
 
 const CategoriesBlock = styled.div`
     display: flex;
-    padding: 15vh;
-    width: 40%;
+    padding-top: 13vh;
+    padding-bottom: 1.5vh;
+    padding-left: 10%;
+    width: 100%;
     margin: 0 auto;
     @media screen and (max-width: 768px){
         width: 100%,
@@ -45,33 +55,31 @@ const Category = styled.div`
     white-space: pre;
     text-decoration: none;
     color: inherit;
-    padding-bottom: 0.25rem;
+    padding: 0.25rem;
 
     &: hover {
-        color: #495057;
+        border-bottom: 2px solid #22b8cf;
     }
 
     ${props =>
         props.active && css`
         font-weight: 600;
         border-bottom: 2px solid #22b8cf;
-        color: #22b8cf;
-        &: hover {
-            color: #3bc9db;
-        }
     `}
-
-    & + & {
-        margin-left: 1rem;
-    }
 `;
 
+const Categories = (props) => {
+    const dispatch = useDispatch();
+    const onSelect = (position) => {
+        dispatch(setPosition(position));
+    }
 
-const Categories = ({ onSelect, category }) => {
     return (
         <CategoriesBlock>
-            {categories.map(c => (
-                <Category key={c.name} active={category === c.name} onClick={() => onSelect(c.name)}>{c.text}</Category>
+            {categories.map(category => (
+                <Category key={category.name} active={props.position === category.name} onClick={() => onSelect(category.name)}>
+                    <img src={"/images/position/"+ category.menu_img} width="30px"></img>
+                </Category>
             ))}
         </CategoriesBlock>
     );

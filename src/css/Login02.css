@@ -1,13 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap");
 
 .logo {
+  margin-top: 50px;
+  margin-bottom: 80px;
   font-family: "Racing Sans One", cursive;
   font-size: 50px;
 }
 
 .logo > span {
   color: red;
-}
-
-.buttonStyle {
 }

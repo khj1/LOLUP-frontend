@@ -1,14 +1,17 @@
 import React from 'react';
-import kakaoLogin from '../../css/img/kakaoLogin.png'
 import { withRouter } from 'react-router';
+import '../../css/Button.css'
 
 const KakaoLogin = () => {
+	const kakaoUrl = "http://localhost:8080/oauth2/authorization/kakao?redirect_url=http://localhost:3000/login/oauth2/code/kakao";
+	
 	return (
-		<div>
-			<a id="kakao-login-btn" href="http://localhost:8080/oauth2/authorization/kakao?redirect_url=http://localhost:3000/login/oauth2/code/kakao">
-				<img alt={"kakao_login"} src={kakaoLogin} width="222px" height="49px"/>
+			<a class="kakaoBtnLink" href={kakaoUrl}>
+				<div className="kakaoBtn">
+					<img src="/images/buttons/kakaologo.png" className="kakaoLogo"/>
+					카카오로 로그인
+				</div>
 			</a>
-		</div>
 	)
 }
 

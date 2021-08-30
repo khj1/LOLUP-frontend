@@ -3,18 +3,17 @@ const initialState = {
     authorized: false
 };
 
-export default (state = initialState, action) => {
+function auth (state = initialState, action) {
     switch (action.type) {
         case "AUTHORIZED":
-            return { ...state, authorized: true };
-            break;
+            return { ...state, authorized: true, data: action.payload };
 
         case "UNAUTHORIZED":
             return { ...state, authorized: false };
-            break; 
 
         default:
             return state;
-            break;
     }
 }
+
+export default auth;

@@ -3,7 +3,7 @@
 .nav__logo {
   font-family: "Racing Sans One", cursive;
   color: black; /*추가*/
-  font-size: 5vh;
+  font-size: 50px;
   margin-top: 0.25em;
 }
 
@@ -20,8 +20,7 @@
 .nav {
   position: fixed;
   width: 100%;
-  height: 9vh;
-  /* padding-top: 0.1em; */
+  height: 90px;
   display: flex;
   justify-content: space-around;
   flex-direction: row;
@@ -72,11 +71,11 @@ ul {
 
 .menu-list a {
   display: inline-flexbox;
-  padding: 3.5vh 2em;
+  padding: 30px 2em;
   color: black;
   position: relative;
   font-family: "Roboto", sans-serif;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: bold;
   letter-spacing: 0.09em;
   -webkit-transition: all 0.4s ease 0s;

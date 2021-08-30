@@ -1,17 +1,21 @@
-import React, { useState, useCallback } from "react";
+import React from "react";
+import { connect } from "react-redux";
 import Categories from '../buttons/Categories'
 import DuoList from "./DuoList";
 
-function Home() {
-  const [category, setCategory] = useState("all");
-  const onSelect = useCallback((category) => setCategory(category), []);
-
+function Home(state) {
   return (
     <div>
-      <Categories category={category} onSelect={onSelect} />
-      <DuoList category={category} />
+      <Categories position={state.value}/>
+      <DuoList />
     </div>
   );
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+    return {
+        value: state.position.value
+    }
+}
+
+export default connect(mapStateToProps)(Home);

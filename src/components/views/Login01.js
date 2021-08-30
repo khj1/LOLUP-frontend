@@ -6,11 +6,11 @@ import Login02 from "./Login02";
 class Login01 extends Component {
   render() {
     return (
-      <div className="App">
-        <FadeIn delay="700" transitionDuration="1000">
-          <Login02 />
-        </FadeIn>
-      </div>
+        <div className="loginContainer">
+            <FadeIn delay="200" transitionDuration="800">
+                <Login02 />
+            </FadeIn>
+        </div>
     );
   }
 }
