@@ -12,7 +12,7 @@ function Logout(props) {
     useEffect(() => {
         const accessToken = localStorage.getItem("token");
 
-        axios.defaults.baseURL = "http://localhost:8080";
+        axios.defaults.baseURL = "http://lolup-api.p-e.kr";
         axios.defaults.headers = { 
             'Authorization' : `Bearer ${accessToken}` 
         };
