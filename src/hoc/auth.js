@@ -13,7 +13,6 @@ export default function (SpectificComponent, option){
         
         useEffect(() => {
             if(localStorage.getItem("token") != null){
-                
                 dispatch(authorized()).then(response => {
                     console.log("AuthenticationCheck=", response)
                     if(response.payload == 401){
