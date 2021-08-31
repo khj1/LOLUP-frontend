@@ -6,7 +6,7 @@ export function authorized() {
     console.log("accessToken called from localStorage", accessToken);
 
     if(accessToken != null){
-        axios.defaults.baseURL = "http://localhost:8080";
+        axios.defaults.baseURL = "http://lolup-api.p-e.kr";
         axios.defaults.headers = { 
             'Authorization' : `Bearer ${accessToken}` 
         };
