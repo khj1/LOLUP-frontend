@@ -1,22 +1,40 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import "../../css/Header.css";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import Sidemenu from "./Sidemenu";
+import { Button } from "react-bootstrap";
+import { loginModalOff, loginModalOn } from "../../_actions/userAction";
 
 function Header(props) {
+    const dispatch = useDispatch();
+
+    const popupLoginModal = () => {
+        if(props.isOn){
+            dispatch(loginModalOff());
+        } else {
+            dispatch(loginModalOn());
+        }
+    }
     
     let loginOrLogout;
-    if(props.auth){
-        loginOrLogout = <Link to="/logout">로그아웃</Link>
-    } else {
-        loginOrLogout = <Link to="/login">로그인</Link>
+    if(props.isAuth){
+        loginOrLogout = 
+            <Button className="btn" variant="primary" href="/logout">
+                로그아웃
+            </Button>
+
+    } else if(props.isAuth === false) {
+        loginOrLogout = 
+            <Button className="btn" variant="primary" onClick={() => popupLoginModal()}>
+                로그인
+            </Button>
     }
 
     return (
         <div className="nav" id="outer-container">
-            <Link to="/">
+            <Link className="nav_logo_wrapper" to="/">
                 <h1 className="nav__logo">
                     LOL<span>UP</span>
                 </h1>
@@ -37,7 +55,8 @@ function Header(props) {
 
 const mapStateToProps = (state) => {
     return {
-        auth: state.auth.authorized
+        isAuth: state.auth.authorized,
+        isOn: state.loginModal.isOn
     }
 }
 
