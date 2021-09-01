@@ -3,6 +3,8 @@ import React, {useEffect} from 'react';
 import { useDispatch } from 'react-redux';
 import { authorized } from '../_actions/userAction';
 
+import { API_DOMAIN } from '../utils/Env';
+
 export default function (SpectificComponent, option){
     // option
         // null      => 아무나 출입 가능
@@ -16,8 +18,7 @@ export default function (SpectificComponent, option){
                 dispatch(authorized()).then(response => {
                     console.log("AuthenticationCheck=", response)
                     if(response.payload == 401){
-                        // axios.defaults.baseURL = 'http://lolup-api.p-e.kr';
-                        axios.defaults.baseURL = 'http://localhost:8080';
+                        axios.defaults.baseURL = API_DOMAIN;
                         axios.defaults.headers = {
                             'Authorization' : "expired Token"
                         }

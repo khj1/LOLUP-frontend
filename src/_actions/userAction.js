@@ -1,4 +1,5 @@
 import axios from "axios"
+import { API_DOMAIN } from "../utils/Env";
 
 export function authorized() {
     const accessToken = localStorage.getItem('token');
@@ -6,8 +7,7 @@ export function authorized() {
     console.log("accessToken called from localStorage", accessToken);
 
     if(accessToken != null){
-        // axios.defaults.baseURL = "http://lolup-api.p-e.kr";
-        axios.defaults.baseURL = "http://localhost:8080";
+        axios.defaults.baseURL = API_DOMAIN;
         axios.defaults.headers = { 
             'Authorization' : `Bearer ${accessToken}` 
         };

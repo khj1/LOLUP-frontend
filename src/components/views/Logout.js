@@ -6,14 +6,15 @@ import { useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
+import { API_DOMAIN } from '../../utils/Env';
+
 function Logout(props) {
     const dispatch = useDispatch();
 
     useEffect(() => {
         const accessToken = localStorage.getItem("token");
 
-        // axios.defaults.baseURL = "http://lolup-api.p-e.kr";
-        axios.defaults.baseURL = "http://localhost:8080";
+        axios.defaults.baseURL = API_DOMAIN;
         axios.defaults.headers = { 
             'Authorization' : `Bearer ${accessToken}` 
         };
