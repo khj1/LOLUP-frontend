@@ -14,8 +14,8 @@ class Login02 extends Component {
     };
 
     return (
-      <Grid>
-        <Paper elevation={10} style={paperStyle}>
+      <Grid className="grid">
+        <Paper elevation={10} style={paperStyle} onClick={e => e.stopPropagation() }>
           <Grid align="center">
             <h1 className="logo">
               LOL<span>UP</span>

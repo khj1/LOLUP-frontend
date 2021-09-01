@@ -16,7 +16,8 @@ export default function (SpectificComponent, option){
                 dispatch(authorized()).then(response => {
                     console.log("AuthenticationCheck=", response)
                     if(response.payload == 401){
-                        axios.defaults.baseURL = 'http://lolup-api.p-e.kr';
+                        // axios.defaults.baseURL = 'http://lolup-api.p-e.kr';
+                        axios.defaults.baseURL = 'http://localhost:8080';
                         axios.defaults.headers = {
                             'Authorization' : "expired Token"
                         }

@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap");
 
+.nav_logo_wrapper {
+  height: 60px;
+  margin: 0px 12.5px;
+}
+
 .nav__logo {
   font-family: "Racing Sans One", cursive;
   color: black; /*추가*/
@@ -29,7 +34,7 @@
   z-index: 9999; 
 }
 
-.nav a {
+.nav a:not(.btn) {
   text-decoration: none;
   color: black;
   text-transform: uppercase;
@@ -69,7 +74,7 @@ ul {
   text-align: center;
 }
 
-.menu-list a {
+.menu-list a:not(:last-child) {
   display: inline-flexbox;
   padding: 30px 2em;
   color: black;
@@ -85,8 +90,8 @@ ul {
 }
 
 
-.menu-list li a:hover,
-.menu-list li a.active {
+.menu-list li a:not(:last-child):hover,
+.menu-list li a:not(:last-child).active {
   color: brown;
   background-color: whitesmoke;
 }
@@ -113,3 +118,17 @@ ul {
   border-radius: 0;
   cursor: pointer;
 }
+
+.btn {
+  margin: 23px 0px 30px 40px; 
+  font-size: 20px !important;
+  font-weight: bold !important;
+}
+
+.btn:active {
+  outline: none !important;
+  border: none !important;
+}
+
+
+

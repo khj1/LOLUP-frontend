@@ -3,7 +3,8 @@ import { withRouter } from 'react-router';
 import '../../css/Button.css'
 
 const KakaoLogin = () => {
-	const kakaoUrl = "http://lolup-api.p-e.kr/oauth2/authorization/kakao?redirect_url=http://d2fh37v4sikqk8.cloudfront.net/login/oauth2/code/kakao";
+	// const kakaoUrl = "http://lolup-api.p-e.kr/oauth2/authorization/kakao?redirect_url=http://d2fh37v4sikqk8.cloudfront.net/login/oauth2/code/kakao";
+	const kakaoUrl = "http://localhost:8080/oauth2/authorization/kakao?redirect_url=http://d2fh37v4sikqk8.cloudfront.net/login/oauth2/code/kakao";
 	
 	return (
 			<a class="kakaoBtnLink" href={kakaoUrl}>
