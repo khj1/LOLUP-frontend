@@ -17,6 +17,7 @@ import 'moment/locale/ko';
 
 import '../../css/DuoList.css';
 import { API_DOMAIN } from "../../utils/Env";
+import Chatting from "../buttons/Chatting";
 
 function DuoList(props) {
     const [List, setList] = useState([]);
@@ -118,8 +119,8 @@ function DuoList(props) {
                     </StyledTableCell>
                     <StyledTableCell align="center">{row.desc}</StyledTableCell>
                     <StyledTableCell align="center">{row.postDate}</StyledTableCell>
-                    <StyledTableCell align="center">
-                        <img src={'/images/buttons/chat.png'} width="35px"/>
+                    <StyledTableCell align="center"> 
+                        <Chatting/>
                     </StyledTableCell>
                 </StyledTableRow>
               ))}
