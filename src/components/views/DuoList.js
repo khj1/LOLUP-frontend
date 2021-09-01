@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import styled, { css } from "styled-components";
 import { connect } from "react-redux";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
+import { ConvertTierToKR } from "../../utils/ConvertTierToKR";
+import { ConvertRankToNumber } from "../../utils/ConvertRankToNumber";
+import { ConvertTotalWinRate } from "../../utils/ConvertTotalWinRate";
 
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
@@ -69,10 +72,9 @@ function DuoList(props) {
         opggLink: 'https://www.op.gg/summoner/userName=' + row.summonerName,
         position: '/images/position/' + row.position + '.png',
         tierImg : '/images/tier/' + row.tier + '.png',
-        tier: row.tier,
-        rank: row.rank,
-        wins: row.win,
-        loses: row.lose,
+        tier: ConvertTierToKR(row.tier),
+        rank: ConvertRankToNumber(row.rank),
+        totalWinRate: ConvertTotalWinRate(row.win, row.lose),
         latestWinRate: row.latestWinRate,
         desc: row.desc,
         postDate: MomentDateChange(row.postDate)
@@ -83,15 +85,15 @@ function DuoList(props) {
           <Table
             className="duoTable"
             aria-label="customized table"
-            style={{ width: "80%" }}
+            style={{ width: "1300px" }}
           >
             <TableHead>
               <TableRow>
                 <StyledTableCell align="left">소환사 이름</StyledTableCell>
                 <StyledTableCell align="left">포지션</StyledTableCell>
                 <StyledTableCell align="center">티어</StyledTableCell>
-                <StyledTableCell align="center">총 승률</StyledTableCell>
-                <StyledTableCell align="center">최근 10 게임 승률</StyledTableCell>
+                <StyledTableCell align="center">전체 승률</StyledTableCell>
+                <StyledTableCell align="center">최근 승률</StyledTableCell>
                 <StyledTableCell align="center">선호챔피언</StyledTableCell>
                 <StyledTableCell align="center">한줄소개</StyledTableCell>
                 <StyledTableCell align="center">등록날짜</StyledTableCell>
@@ -106,14 +108,14 @@ function DuoList(props) {
                         <img src= {row.iconId} style={{ width: '50px', borderRadius: '70%', border: '1px solid silver' }}/> &nbsp;
                         <a href= {row.opggLink} target="_blank" class="summonerName">{row.summonerName}</a>
                     </StyledTableCell>
-                    <StyledTableCell align="left"><img src= {row.position} width="40px" /> </StyledTableCell>
-                    <StyledTableCell align="left"><img src= {row.tierImg} width="50px"/> {row.tier} {row.rank}</StyledTableCell>
-                    <StyledTableCell align="center"> {row.wins}승 {row.loses}패 ({row.wins / (row.loses + row.wins) * 100}%) </StyledTableCell>
+                    <StyledTableCell align="left"><img src= {row.position} width="30px" /> </StyledTableCell>
+                    <StyledTableCell align="left"><img src= {row.tierImg} width="40px"/> {row.tier} {row.rank}</StyledTableCell>
+                    <StyledTableCell align="center"> {row.totalWinRate} </StyledTableCell>
                     <StyledTableCell align="center"> {row.latestWinRate} </StyledTableCell>
                     <StyledTableCell align="center">
                         {row.most.map((info) => {
                             const imgUrl = "http://ddragon.leagueoflegends.com/cdn/11.16.1/img/champion/"+ info.name + ".png";
-                            return <img src={imgUrl} width="50px"/>;
+                            return <img src={imgUrl} width="40px"/>;
                         })}
                     </StyledTableCell>
                     <StyledTableCell align="center">{row.desc}</StyledTableCell>
@@ -128,6 +130,15 @@ function DuoList(props) {
         </TableContainer>
     );
 }
+
+const TableContainer = styled.div`
+    width: 1300px;
+    margin: 0 auto;
+    @media screen and (max-width: 800px){
+        width: 100%,
+        overflow-x: auto;
+    }
+`;
 
 const mapStateToProps = (state) => {
     return {
