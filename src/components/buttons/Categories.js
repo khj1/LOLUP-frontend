@@ -38,12 +38,11 @@ const categories = [
 
 const CategoriesBlock = styled.div`
     display: flex;
-    padding-top: 13vh;
+    padding-top: 120px;
     padding-bottom: 1.5vh;
-    padding-left: 10%;
-    width: 100%;
+    width: 1300px;
     margin: 0 auto;
-    @media screen and (max-width: 768px){
+    @media screen and (max-width: 1300px){
         width: 100%,
         overflow-x: auto;
     }
