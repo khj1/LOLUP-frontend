@@ -16,16 +16,22 @@ import Moment from "react-moment";
 import 'moment/locale/ko';
 
 import '../../css/DuoList.css';
+import { API_DOMAIN } from "../../utils/Env";
 
 function DuoList(props) {
     const [List, setList] = useState([]);
 
     useEffect(() => {
-        // axios.get(`http://lolup-api.p-e.kr/duo?position=${props.position}&tier=${props.tier}`)
-        axios.get(`http://localhost:8080/duo?position=${props.position}&tier=${props.tier}`)
-            .then(function (result) {
-                return setList(result.data);
-            })  
+        axios.defaults.baseURL = API_DOMAIN;
+        axios.get("/duo", {
+            params : {
+                position: props.position,
+                tier: props.tier
+            }
+        })
+        .then(function (result) {
+            return setList(result.data);
+        })  
     },[props.position, props.tier])
 
     const MomentDateChange = (value) => {
