@@ -42,8 +42,6 @@ function Header(props) {
 
             <ul className="menu-list">
                 <li>
-                    <Link to="/duo">듀오</Link>
-                    <Link to="/team">팀</Link>
                     {loginOrLogout}
                 </li>
             </ul>

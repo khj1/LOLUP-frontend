@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { setPosition } from '../../_actions/userAction';
+import { initDuoData, setPosition } from '../../_actions/userAction';
 import styled, { css } from 'styled-components';
 
 const categories = [
@@ -70,6 +70,7 @@ const Category = styled.div`
 const Categories = (props) => {
     const dispatch = useDispatch();
     const onSelect = (position) => {
+        dispatch(initDuoData());
         dispatch(setPosition(position));
     }
 
