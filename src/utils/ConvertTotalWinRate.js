@@ -3,26 +3,23 @@ export const ConvertTotalWinRate = (win, lose) => {
     const winAndLose = `${win}승 ${lose}패`;
 
     const styleByWinRate = (winRate) => {
-        if(winRate >= 70) {
+        if (winRate >= 60) {
             return {
                 color: "#FF0000",
                 fontWeight: "bold"
             };
-        } else if (winRate >= 60) {
-            return {
-                color: "#FF0000",
-            };
         } else if (winRate >= 50) {
             return {
-                color: "#000080",
+                color: "#003DF6",
+                fontWeight: "bold"
             };
         } else if (winRate >= 40) {
             return {
-                color: "#1CBB21",
+                color: "#000000"
             };
         } else {
             return {
-                color: "#CBCBCB",
+                color: "#AAAAAA",
                 fontWeight: "bold"
             };
         }

@@ -56,3 +56,15 @@ export function loginModalOff() {
         type: "OFF"
     }
 }
+
+export function getMoreDuoData() {
+    return {
+        type: "GET"
+    }
+}
+
+export function initDuoData() {
+    return {
+        type: "INIT"
+    }
+}
