@@ -74,27 +74,6 @@ ul {
   text-align: center;
 }
 
-.menu-list a:not(:last-child) {
-  display: inline-flexbox;
-  padding: 30px 2em;
-  color: black;
-  position: relative;
-  font-family: "Roboto", sans-serif;
-  font-size: 20px;
-  font-weight: bold;
-  letter-spacing: 0.09em;
-  -webkit-transition: all 0.4s ease 0s;
-  -o-transition: all 0.4s ease 0s;
-  transition: all 0.4s ease 0s;
-  float: right;
-}
-
-
-.menu-list li a:not(:last-child):hover,
-.menu-list li a:not(:last-child).active {
-  color: brown;
-  background-color: whitesmoke;
-}
 .menu-list li:last-child a {
   float: left;
   margin-right: 10;
@@ -120,7 +99,7 @@ ul {
 }
 
 .btn {
-  margin: 23px 0px 30px 40px; 
+  margin: 22.5px 10px 22.5px 10px; 
   font-size: 20px !important;
   font-weight: bold !important;
 }

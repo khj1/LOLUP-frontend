@@ -5,14 +5,14 @@ import Login01 from './Login01';
 function LoginModal(props) {
     return (
         <>
-            { props.isOn ? <Login01 /> : null }
+            { props.loginModalisOn ? <Login01 /> : null }
         </>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        isOn: state.loginModal.isOn,
+        loginModalisOn: state.loginModal.isOn,
         isAuth: state.auth.authorized
     }
 }
