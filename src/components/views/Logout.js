@@ -23,6 +23,9 @@ function Logout(props) {
 
             if(response.data.logout){
                 localStorage.removeItem("token");
+                localStorage.removeItem("memberId");
+                localStorage.removeItem("summonerName");
+                
                 dispatch(authorized());
                 props.history.push("/");
             }

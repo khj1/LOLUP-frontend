@@ -14,11 +14,17 @@ export function authorized() {
         
         const request = axios.get('/auth/check')
             .then( response => { 
-                console.log(response.data)
-                return response.data
+                const memberId = response.data.memberId;
+                let summonerName = response.data.summonerName;
+                if(summonerName === null) {
+                    summonerName = "";
+                }
+                localStorage.setItem("memberId", memberId);
+                localStorage.setItem("summonerName", summonerName);
+                return response.data;
             })
-            .catch( error => {
-                return error.response.status
+            .catch(error => {
+                return error.response.status;
             });
     
         return {
@@ -47,13 +53,25 @@ export function setTier(tier) {
 
 export function loginModalOn() {
     return {
-        type: "ON"
+        type: "LOGIN_MODAL_ON"
     }
 }
 
 export function loginModalOff() {
     return {
-        type: "OFF"
+        type: "LOGIN_MODAL_OFF"
+    }
+}
+
+export function nameModalOn() {
+    return {
+        type: "NAME_MODAL_ON"
+    }
+}
+
+export function nameModalOff() {
+    return {
+        type: "NAME_MODAL_OFF"
     }
 }
 

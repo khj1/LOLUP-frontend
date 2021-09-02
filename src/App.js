@@ -12,6 +12,7 @@ import Logout from  "./components/views/Logout";
 import Oauth2Handler from "./components/views/Oauth2Handler";
 import "./App.css";
 import LoginModal from "./components/views/LoginModal";
+import NameModal from "./components/views/NameModal";
 
 function App(props) {
   return (
@@ -19,6 +20,7 @@ function App(props) {
       
       <Header />
       <LoginModal />
+      <NameModal />
       
       <Switch>
         <Route exact path="/" component={Home} />

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styled, { css } from "styled-components";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import { ConvertTierToKR } from "../../utils/ConvertTierToKR";
 import { ConvertRankToNumber } from "../../utils/ConvertRankToNumber";
@@ -22,10 +22,11 @@ import '../../css/DuoList.css';
 import { API_DOMAIN } from "../../utils/Env";
 import Chatting from "../buttons/Chatting";
 import MoreDataBtn from "../buttons/MoreDataBtn";
+import { nameModalOn } from "../../_actions/userAction";
 
 function DuoList(props) {
+    const dispatch = useDispatch();
     const [duoList, setDuoList] = useState([]);
-    const [section, setSection] = useState(1);
     const [totalCount, setTotalCount] = useState(0);
 
     useEffect(() => {
@@ -44,6 +45,12 @@ function DuoList(props) {
             setDuoList(map.data);
         })  
     },[props.position, props.tier, props.section]);
+
+    useEffect(() => {
+        if( props.isAuth && localStorage.getItem("summonerName") === "") {
+            dispatch(nameModalOn());
+        }
+    })
 
 
     const MomentDateChange = (value) => {
@@ -154,6 +161,7 @@ const TableContainer = styled.div`
 
 const mapStateToProps = (state) => {
     return {
+        isAuth: state.auth.authorized,
         position: state.position.value,
         tier: state.tier.value,
         section: state.duoData.section

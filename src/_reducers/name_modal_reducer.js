@@ -3,12 +3,12 @@ const initialState = {
     isOn: false
 };
 
-function loginModal (state = initialState, action) {
+function nameModal (state = initialState, action) {
     switch (action.type) {
-        case "ON":
+        case "NAME_MODAL_ON":
             return { ...state, isOn: true };
         
-        case "OFF":
+        case "NAME_MODAL_OFF":
             return { ...state, isOn: false };
         
         default:
@@ -16,4 +16,4 @@ function loginModal (state = initialState, action) {
     }
 }
 
-export default loginModal
+export default nameModal
