@@ -3,7 +3,6 @@ import { Spinner } from 'react-bootstrap';
 import { authorized } from '../../_actions/userAction';
 import { withRouter } from 'react-router';
 import { useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 import { API_DOMAIN } from '../../utils/Env';

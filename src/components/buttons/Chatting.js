@@ -22,20 +22,20 @@ const Button = styled.button`
 `;
 
 function Chatting() {
-  const [showModal, setShowModal] = useState(false)
-  const openModal = () => {
-    setShowModal(prev=>!prev)
-  };
+    const [showModal, setShowModal] = useState(false)
+    const openModal = () => {
+        setShowModal(prev=>!prev)
+    };
  
-  return (
-    <>
-      <Container>
-        <Button onClick={openModal}><img src={'/images/buttons/chat.png'} width="35px"/></Button> 
-        <Modal showModal={showModal} setShowModal={setShowModal} />
-        <GlobalStyles/>
-      </Container> 
-    </>
-  );
+    return (
+        <>
+            <Container>
+                <Button onClick={openModal}><img src={'/images/buttons/kakaologo2.png'} width="35px"/></Button> 
+                <Modal showModal={showModal} setShowModal={setShowModal} />
+                <GlobalStyles/>
+            </Container> 
+        </>
+    );
 }
 
 export default Chatting;

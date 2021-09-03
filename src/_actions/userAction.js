@@ -75,6 +75,18 @@ export function nameModalOff() {
     }
 }
 
+export function addModalOn() {
+    return {
+        type: "ADD_MODAL_ON"
+    }
+}
+
+export function addModalOff() {
+    return {
+        type: "ADD_MODAL_OFF"
+    }
+}
+
 export function getMoreDuoData() {
     return {
         type: "GET"
@@ -84,5 +96,11 @@ export function getMoreDuoData() {
 export function initDuoData() {
     return {
         type: "INIT"
+    }
+}
+
+export function update() {
+    return {
+        type: "UPDATE"
     }
 }

@@ -40,11 +40,11 @@ const CategoriesBlock = styled.div`
     display: flex;
     padding-top: 120px;
     padding-bottom: 1.5vh;
-    width: 1300px;
+    width: 1400px;
     margin: 0 auto;
     @media screen and (max-width: 1300px){
         width: 100%,
-        overflow-x: auto;
+        overflow-x: auto;   
     }
 `;
 
@@ -69,11 +69,12 @@ const Category = styled.div`
 
 const Categories = (props) => {
     const dispatch = useDispatch();
+    
     const onSelect = (position) => {
         dispatch(initDuoData());
         dispatch(setPosition(position));
     }
-
+    
     return (
         <CategoriesBlock>
             {categories.map(category => (
