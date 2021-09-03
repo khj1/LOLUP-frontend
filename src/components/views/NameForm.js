@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import axios, {encodeURIComponent} from "axios";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { useDispatch } from "react-redux";
 import { API_DOMAIN } from "../../utils/Env";
 import { Button } from "react-bootstrap";
@@ -7,10 +7,9 @@ import { Grid, Paper } from "@material-ui/core";
 import 'antd/dist/antd.css';
 import { Input, Alert } from "antd";
 import "../../css/NameForm.css";
-import { red } from "@material-ui/core/colors";
 import { nameModalOff } from "../../_actions/userAction";
 
-const NameForm = () => {
+const NameForm = (props) => {
     const dispatch = useDispatch();
     const memberId = localStorage.getItem("memberId");
     const storedName = localStorage.getItem("summonerName");
@@ -20,34 +19,41 @@ const NameForm = () => {
     const inputOnChangeHandler = (event) => {
         setSummonerName(event.currentTarget.value);
     }
-
+    
     const updateName = () => {
         axios.defaults.baseURL = API_DOMAIN;
         axios.defaults.headers = { 
             'Authorization' : `Bearer ${accessToken}`
         };
         axios.get(`/riot/find/${summonerName}`)
-            .then(response => {
-                axios.patch(`/member/${memberId}`, null, {
-                    params : {
-                        summonerName: response.data.summonerName,
-                        memberId: memberId
-                    }
-                })
-                .then(response => {
-                    console.log(response.data);
-                    localStorage.setItem("summonerName", response.data.updatedSummonerName);
-                })
-                dispatch(nameModalOff());
-
-            })
-            .catch(error => {
-                if(error.response.status === 404){
-                    alert("존재하지 않는 소환사 이름입니다.");
+        .then(response => {
+            
+            axios.patch(`/member/${memberId}`, null, {
+                params : {
+                    summonerName: response.data.summonerName,
+                    memberId: memberId
                 }
-            });
+            })
+            .then(response => {
+                console.log(response.data);
+                localStorage.setItem("summonerName", response.data.updatedSummonerName);
+            })
+            dispatch(nameModalOff());
+            
+        })
+        .catch(error => {
+            if(error.response.status === 404){
+                alert("존재하지 않는 소환사 이름입니다.");
+            }
+        });
     }
 
+    const enterkey = (event) => {
+        if (event.keyCode == 13) {
+             updateName();
+        }
+    }
+    
     return (
       <Grid className="grid">
         <Paper elevation={10} style={paperStyle} onClick={e => e.stopPropagation() }>
@@ -58,11 +64,13 @@ const NameForm = () => {
             <div style = {divStyle}>
                 <Input type="text" className="nameInput" 
                     value={summonerName}
-                    onChange={inputOnChangeHandler}/>
+                    onKeyUp={enterkey}
+                    onChange={inputOnChangeHandler}
+                />
 
                 {storedName === "" ? 
-                    <Button onClick={updateName}>등록하기</Button> 
-                    : <Button onClick={updateName}>변경하기</Button>}  
+                    <Button className="name_btn" onClick={updateName}>등록하기</Button> 
+                    : <Button className="name_btn" onClick={updateName}>변경하기</Button>}  
             </div>
 
           </Grid>

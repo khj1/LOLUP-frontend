@@ -1,7 +1,7 @@
 export const ConvertTierToKR = (tierENG) => {
     switch (tierENG) {
         case "UNRANKED":
-            return "언랭크";
+            return "";
         case "IRON":
             return "아이언";
         case "BRONZE":

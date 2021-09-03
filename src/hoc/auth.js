@@ -36,13 +36,13 @@ export default function (SpectificComponent, option){
                     } else {
                     // 로그인하지 않은 상태
                         if(option) {
-                            props.history.push("/login")
+                            props.history.push("/")
                         }
                     }
                 }); 
             } else {
                 if(option) {
-                    props.history.push("/login")
+                    props.history.push("/")
                 }
             }
         }, [])

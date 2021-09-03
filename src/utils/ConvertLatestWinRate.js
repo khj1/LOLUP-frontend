@@ -1,14 +1,5 @@
-export const ConvertTotalWinRate = (wins, losses) => {
-    let winRate;
-
-    if((wins + losses) === 0){
-        winRate = 0;
-    } else {
-        winRate = Math.round( (wins / (wins + losses) * 100) );
-    } 
-    
-    const winAndLose = `${wins}승 ${losses}패`;
-
+export const ConvertLatestWinRate = (latestWinRate) => {
+    const winRate = Number.parseInt(latestWinRate);
     const styleByWinRate = (winRate) => {
         if (winRate >= 60) {
             return {
@@ -32,10 +23,5 @@ export const ConvertTotalWinRate = (wins, losses) => {
         }
     }
 
-    return (
-        <>
-            {winAndLose}
-            (<span style={styleByWinRate(winRate)}>{winRate}%</span>)
-        </>
-    )
+    return <span style={styleByWinRate(winRate)}> {winRate}%</span>
 }

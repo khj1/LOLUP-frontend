@@ -12,7 +12,9 @@ function MoreDataBtn() {
 
     return (
         <div className="moreDataWrapper">
-            <Button className="moreDataBtn" onClick={() => moreData()}>더보기</Button>
+            <Button variant="outline-dark" className="moreDataBtn" onClick={() => moreData()}>
+                더보기
+            </Button>
         </div>
     )
 }

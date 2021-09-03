@@ -13,6 +13,7 @@ import Oauth2Handler from "./components/views/Oauth2Handler";
 import "./App.css";
 import LoginModal from "./components/views/LoginModal";
 import NameModal from "./components/views/NameModal";
+import AddModal from "./components/views/AddModal";
 
 function App(props) {
   return (
@@ -21,6 +22,7 @@ function App(props) {
       <Header />
       <LoginModal />
       <NameModal />
+      <AddModal />
       
       <Switch>
         <Route exact path="/" component={Home} />

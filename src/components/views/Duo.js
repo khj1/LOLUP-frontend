@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import Categories from '../buttons/Categories'
 import DuoList from "./DuoList";
 
-function Home(state) {
+function Home(props) {
   return (
     <div>
-      <Categories position={state.value}/>
+      <Categories position={props.value}/>
       <DuoList />
     </div>
   );

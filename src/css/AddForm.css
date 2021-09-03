@@ -11,19 +11,39 @@
   color: red;
 }
 
-.nameInput {
-    height: 60px;
-    width: 390px;
+.summonerNameInput {
+    height: 50px;
+    width: 560px;
     font-size: 20px;
     font-weight: bold;
-    margin: 12.5px 10px;
 }
 
-.name_btn {
-    height: 60px;
+.posBtnWrapper {
+    display: flex;
+    height: fit-content;
+}
+
+.posBtnBorder {
+    padding: 5px;
+    height: fit-content;
+    width: fit-content;
+}
+
+.addDesc {
+    font-size: 15px;
+}
+
+.add_btn {
+    width: 106.22px;
+    height: fit-content;
     margin: 0px 5px 0px 5px; 
     font-size: 20px !important;
     font-weight: bold !important;
+}
+
+.addSpinner {
+    width: 20px !important;
+    height: 20px !important;
 }
 
 
