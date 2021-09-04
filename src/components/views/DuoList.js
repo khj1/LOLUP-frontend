@@ -24,12 +24,15 @@ import Chatting from "../buttons/Chatting";
 import MoreDataBtn from "../buttons/MoreDataBtn";
 import { nameModalOn, updateToggleOff } from "../../_actions/userAction";
 import { ConvertLatestWinRate } from "../../utils/ConvertLatestWinRate";
+import DeleteButton from "../buttons/DeleteButton";
 
 function DuoList(props) {
     const dispatch = useDispatch();
     const [duoList, setDuoList] = useState([]);
     const [version, setVersion] = useState("");
     const [totalCount, setTotalCount] = useState(0);
+
+    const storedMemberId = localStorage.getItem("memberId");
 
     const getList = () => {
         axios.defaults.baseURL = API_DOMAIN;
@@ -75,6 +78,7 @@ function DuoList(props) {
     duoList.forEach(row => {
         rows.push({
             duoId: row.duoId,
+            memberId: row.memberId,
             most: row.most3,
             iconId: 'http://ddragon.leagueoflegends.com/cdn/11.16.1/img/profileicon/' + row.iconId + '.png',
             summonerName: row.summonerName,
@@ -107,12 +111,12 @@ function DuoList(props) {
                             <StyledTableCell align="center">최근 선호 챔피언</StyledTableCell>
                             <StyledTableCell align="center" width="218.52px">한줄소개</StyledTableCell>
                             <StyledTableCell align="center">등록날짜</StyledTableCell>
-                            <StyledTableCell align="center"></StyledTableCell>
+                            <StyledTableCell align="center" width="130px"></StyledTableCell>
                             <Scroll/>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                    {rows.map((row) => (
+                    {rows.map( row => (
                         <StyledTableRow key={row.duoId}>
                             <StyledTableCell align="left">
                                 <img src= {row.iconId} style={{ width: '50px', borderRadius: '70%', border: '1px solid silver' }}/> &nbsp;
@@ -132,7 +136,14 @@ function DuoList(props) {
                             </StyledTableCell>
                             <StyledTableCell align="center">{row.desc}</StyledTableCell>
                             <StyledTableCell align="center">{row.postDate}</StyledTableCell>
-                            <StyledTableCell align="center"> <Chatting/> </StyledTableCell>
+                            <StyledTableCell align="center"> 
+                                {  
+                                    row.memberId == storedMemberId ? 
+                                        <DeleteButton memberId={row.memberId} duoId={row.duoId}/> 
+                                        : 
+                                        <Chatting/>
+                                }
+                            </StyledTableCell>
                         </StyledTableRow>
                     ))}
                     </TableBody>
