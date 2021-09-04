@@ -12,7 +12,7 @@ const Container = styled.div`
 
 const Button = styled.button`
   min-width: 100px;
-  padding: 16px 32px;
+  padding: 0px 10px;
   border-radius: 4px;
   border: none;
   background: none;
@@ -30,7 +30,7 @@ function Chatting() {
     return (
         <>
             <Container>
-                <Button onClick={openModal}><img src={'/images/buttons/kakaologo2.png'} width="35px"/></Button> 
+                <Button onClick={openModal}><img src={'/images/buttons/kakaologo2.png'} width="30px"/></Button> 
                 <Modal showModal={showModal} setShowModal={setShowModal} />
                 <GlobalStyles/>
             </Container> 

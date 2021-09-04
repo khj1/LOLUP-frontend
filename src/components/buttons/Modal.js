@@ -24,7 +24,6 @@ const ModalWrapper = styled.div`
     border-radius: 10px;
 `;
 
-
 const ModalContent = styled.div`
     display: flex;
     flex-direction: column;
