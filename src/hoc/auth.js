@@ -11,33 +11,26 @@ export default function (SpectificComponent, option){
         // true      => 로그인한 유저만 출입 가능
         // false     => 로그인한 유저는 출입 불가능
     function AuthenticationCheck(props) {
-        const dispatch = useDispatch();
         
+        const dispatch = useDispatch();
+        const refresh = () => {
+            axios.defaults.baseURL = API_DOMAIN;
+            axios.defaults.headers = {
+                'Authorization' : "expired Token"
+            }
+            return axios.get("/auth/refresh", { withCredentials : true });
+        }
+
         useEffect(() => {
-            if(localStorage.getItem("token") != null){
+            const accessToken = localStorage.getItem("token");
+            
+            if(accessToken != null){
                 dispatch(authorized()).then(response => {
                     console.log("AuthenticationCheck=", response)
                     if(response.payload == 401){
-                        axios.defaults.baseURL = API_DOMAIN;
-                        axios.defaults.headers = {
-                            'Authorization' : "expired Token"
-                        }
-                        axios.get("/auth/refresh", { withCredentials : true })
-                        .then(response => {
+                        refresh().then(response => {
                             localStorage.setItem('token', response.data.token)
                         })
-                    }
-    
-                    // 로그인 한 상태
-                    if(response.payload.login){
-                        if(option === false ){
-                            props.history.push("/")
-                        }
-                    } else {
-                    // 로그인하지 않은 상태
-                        if(option) {
-                            props.history.push("/")
-                        }
                     }
                 }); 
             } else {

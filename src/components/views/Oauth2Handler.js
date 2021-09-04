@@ -11,16 +11,12 @@ function Oauth2Handler(props) {
         const url = new URL(window.location.href);
         const token = url.searchParams.get("token");
 
-        console.log("전달된 토큰 값", token);
-
         if(token) {
             localStorage.setItem("token", token);
-            
             dispatch(authorized()).then(response => {
                 console.log("auth response =", response.payload);
             })
         }
-        
         props.history.push("/");
     }, []);
 
