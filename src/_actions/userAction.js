@@ -3,17 +3,20 @@ import { API_DOMAIN } from "../utils/Env";
 
 export function authorized() {
     const accessToken = localStorage.getItem('token');
-
-    console.log("accessToken called from localStorage", accessToken);
-
-    if(accessToken != null){
+    const authCheck = () => {
         axios.defaults.baseURL = API_DOMAIN;
         axios.defaults.headers = { 
             'Authorization' : `Bearer ${accessToken}` 
         };
+        return axios.get('/auth/check');
+    }
+
+    console.log("accessToken called from localStorage", accessToken);
+
+    if(accessToken != null){
+        console.log("토큰 있음, 인증 체크 시작")
         
-        const request = axios.get('/auth/check')
-            .then( response => { 
+        const request = authCheck().then( response => { 
                 const memberId = response.data.memberId;
                 let summonerName = response.data.summonerName;
                 if(summonerName === null) {
@@ -36,6 +39,12 @@ export function authorized() {
         return {
             type: "UNAUTHORIZED"
         }
+    }
+}
+
+export function unauthorized() {
+    return {
+        type: "UNAUTHORIZED"
     }
 }
 
