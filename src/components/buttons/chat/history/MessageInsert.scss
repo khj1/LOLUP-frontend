@@ -1,0 +1,33 @@
+.MessageInsert {
+  display: flex;
+  flex-direction: column; 
+  background: #F2F5F8;;
+  position: sticky;
+  align-items: flex-end;
+  line-height: 2;
+  
+  input { 
+    width: 91%;
+    border: 1px; 
+    padding: 5px 10px 50px; 
+    margin-top: 20px;
+    margin-bottom: 15px; 
+    margin-right: 20px; 
+    border-radius: 5px;
+    resize: none;
+    
+  }
+  button {
+    float: right;
+    color: #94C2ED;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-right: 20px; 
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    background: #F2F5F8;
+  }
+}

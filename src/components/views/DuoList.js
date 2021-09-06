@@ -20,7 +20,7 @@ import 'moment/locale/ko';
 
 import '../../css/DuoList.css';
 import { API_DOMAIN } from "../../utils/Env";
-import Chatting from "../buttons/Chatting";
+import Chatting from "../buttons/chat/Chatting";
 import MoreDataBtn from "../buttons/MoreDataBtn";
 import { nameModalOn, updateToggleOff } from "../../_actions/userAction";
 import { ConvertLatestWinRate } from "../../utils/ConvertLatestWinRate";

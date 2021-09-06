@@ -7,18 +7,12 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  
 `;
 
-const Button = styled.button`
-  min-width: 100px;
-  padding: 0px 10px;
-  border-radius: 4px;
+const Button = styled.button`  
   border: none;
-  background: none;
-  color: #fff;
-  font-size: 24px;
-  cursor: pointer; 
+  background: none; 
+  font-size: 24px; 
 `;
 
 function Chatting() {
@@ -26,14 +20,14 @@ function Chatting() {
     const openModal = () => {
         setShowModal(prev=>!prev)
     };
- 
+
     return (
         <>
             <Container>
                 <Button onClick={openModal}><img src={'/images/buttons/kakaologo2.png'} width="30px"/></Button> 
                 <Modal showModal={showModal} setShowModal={setShowModal} />
                 <GlobalStyles/>
-            </Container> 
+            </Container>
         </>
     );
 }

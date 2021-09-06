@@ -1,6 +1,8 @@
 import React, {useRef, useEffect, useCallback} from 'react'; 
 import styled from 'styled-components';
-import {MdClose} from 'react-icons/md';
+import {MdClose} from 'react-icons/md';    
+import MessageForm from './SendMessage/MessageForm'; 
+import TestApp from './history/TestApp';
 
 const Background = styled.div`
     width: 100%;
@@ -12,36 +14,52 @@ const Background = styled.div`
 `; 
 
 const ModalWrapper = styled.div`
-    width: 450px;
-    height: 650px;
+    transform: translate(-20%, -50%); 
+    left: 82%;
+    top: 58%;
+    width: 20%;
+    height: 60%;
     box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
     background: #fff;
     color: #000;
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
     z-index: 10;
     border-radius: 10px;
 `;
+
+const ModalHeader = styled.div`
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: center;
+    align-items: center;
+    line-height: 5;
+    color: #141414;
+    background: #F2F5F8;
+    border: 1px;
+    border-color:white;
+    word-break:break-all;
+`
 
 const ModalContent = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    line-height: 1.8;
+    align-items: center; 
     color: #141414;
+    background: #F2F5F8;
+`;
 
-    p{
-        margin-bottom: 1rem;
-    }
-
-    button {
-        padding: 10px 24px;
-        background: #141414;
-        color: #fff;
-        border: none;
-    }
+const ModalFooter = styled.div`
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    line-height: 2;
+    background: #F2F5F8;
 `;
 
 const CloseModalButton = styled(MdClose)`
@@ -78,19 +96,17 @@ export const Modal = ({showModal, setShowModal}) => {
     return (
         <>
             {showModal ? (
-                <Background ref={modalRef} onClick={closeModal}> 
+                <Background > 
                     <ModalWrapper showModal={showModal}> 
-                        <ModalContent>
-                            <h3>대화상대 배치</h3> 
-                        </ModalContent>
-                        <ModalContent>
-                            <h1>Chatting</h1>
-                            <p>chat</p>
-                            {/*<button>Join</button>*/}
-                        </ModalContent>
-                        <CloseModalButton aria-label='Close modal' onClick={()=>setShowModal
-                        (prev => !prev)}/>
-                    </ModalWrapper> 
+                        <ModalHeader ref={modalRef} onClick={closeModal}>소환사 님과의 채팅</ModalHeader>
+                        <ModalContent>     
+                            <TestApp />
+                        </ModalContent> 
+                        <ModalFooter>
+                            <MessageForm/> 
+                        </ModalFooter>
+                        <CloseModalButton aria-label='Close modal' onClick={()=>setShowModal (prev => !prev)}/>
+                    </ModalWrapper>
                 </Background>
             ) : null}
         </>
