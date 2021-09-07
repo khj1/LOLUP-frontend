@@ -3,6 +3,12 @@ import styled from 'styled-components';
 import {MdClose} from 'react-icons/md';    
 import MessageForm from './SendMessage/MessageForm'; 
 import TestApp from './history/TestApp';
+import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { chatModalOff } from '../../../_actions/userAction';
+import SockJS from 'sockjs-client';
+import Stomp from 'stompjs'
+import { API_DOMAIN } from '../../../utils/Env';
 
 const Background = styled.div`
     width: 100%;
@@ -15,11 +21,11 @@ const Background = styled.div`
 
 const ModalWrapper = styled.div`
     transform: translate(-20%, -50%); 
-    left: 82%;
-    top: 58%;
-    width: 20%;
-    height: 60%;
-    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
+    right: 0;
+    top: 630px;
+    width: 480px;
+    height: fit-content;
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.03);
     background: #fff;
     color: #000;
     display: flex;
@@ -73,44 +79,38 @@ const CloseModalButton = styled(MdClose)`
     z-index: 10px;
 `;
 
-export const Modal = ({showModal, setShowModal}) => {
-    const modalRef = useRef()
+export const ChatModal = ({chatModalIsOn, chatUserName}) => {
+    const dispatch = useDispatch();
 
-    const closeModal = e => {
-        if(modalRef.current === e.target){
-            setShowModal(false);
-        }
+    const closeModal = () => {
+        dispatch(chatModalOff());
     };
 
-    const keyPress = useCallback(e => {
-        if(e.key==='Escape' && showModal) {
-            setShowModal(false)
-        }
-    }, [setShowModal, showModal]);
-
-    useEffect(()=>{
-        document.addEventListener('keydown', keyPress);
-        return () => document.removeEventListener('keydown', keyPress);
-    }, [keyPress]);
+    const keyPress = useCallback(event => {
+        if(event.keyCode==='Escape' && chatModalIsOn) {
+            dispatch(chatModalOff)
+        }   
+    });
 
     return (
         <>
-            {showModal ? (
-                <Background > 
-                    <ModalWrapper showModal={showModal}> 
-                        <ModalHeader ref={modalRef} onClick={closeModal}>소환사 님과의 채팅</ModalHeader>
-                        <ModalContent>     
-                            <TestApp />
-                        </ModalContent> 
-                        <ModalFooter>
-                            <MessageForm/> 
-                        </ModalFooter>
-                        <CloseModalButton aria-label='Close modal' onClick={()=>setShowModal (prev => !prev)}/>
-                    </ModalWrapper>
-                </Background>
-            ) : null}
+            <Background > 
+                <ModalWrapper> 
+                    <ModalHeader>{chatUserName}님과의 채팅</ModalHeader>
+                    <ModalContent>     
+                        <TestApp />
+                    </ModalContent> 
+                    <CloseModalButton aria-label='Close modal' onClick={closeModal}/>
+                </ModalWrapper>
+            </Background>
         </>
     );
 }
 
-export default Modal;
+const mapStateToProps = state => {
+    return {
+        chatModalIsOn : state.chatModal.isOn
+    }
+}
+
+export default connect(mapStateToProps)(ChatModal);

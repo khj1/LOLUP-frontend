@@ -25,6 +25,7 @@ import MoreDataBtn from "../buttons/MoreDataBtn";
 import { nameModalOn, updateToggleOff } from "../../_actions/userAction";
 import { ConvertLatestWinRate } from "../../utils/ConvertLatestWinRate";
 import DeleteButton from "../buttons/DeleteButton";
+import { ChatModal } from "../buttons/chat/ChatModal";
 
 function DuoList(props) {
     const dispatch = useDispatch();
@@ -99,7 +100,7 @@ function DuoList(props) {
                 <Table
                     className="duoTable"
                     aria-label="customized table"
-                    style={{ width: "1400px" }}
+                    style={{ width: "1400px", marginBottom: "40px" }}
                 >
                     <TableHead>
                         <TableRow>
@@ -141,11 +142,25 @@ function DuoList(props) {
                                     row.memberId == storedMemberId ? 
                                         <DeleteButton memberId={row.memberId} duoId={row.duoId}/> 
                                         : 
-                                        <Chatting/>
+                                        <Chatting
+                                            summonerName = {row.summonerName}
+                                            memberId = {row.memberId}
+                                            duoId = {row.duoId}
+                                        />
                                 }
                             </StyledTableCell>
                         </StyledTableRow>
                     ))}
+                    {
+                        props.chatModalIsOn ? 
+                            <ChatModal 
+                                chatUserName = {props.chatUserName}
+                                chatUserId = {props.chatUserId}
+                                chatRoomId = {props.chatRoomId}
+                            /> 
+                            : 
+                            null 
+                    }
                     </TableBody>
                 </Table> 
             </TableContainer>
@@ -173,6 +188,7 @@ const StyledTableCell = withStyles((theme) => ({
   }))(TableRow);
 
 const TableContainer = styled.div`
+    min-height: 57vh;
     width: 1400px;
     margin: 0 auto;
     @media screen and (max-width: 800px){
@@ -187,7 +203,11 @@ const mapStateToProps = (state) => {
         position: state.position.value,
         tier: state.tier.value,
         section: state.duoData.section,
-        update: state.update.updated
+        update: state.update.updated,
+        chatModalIsOn : state.chatModal.isOn,
+        chatUserName : state.chatUser.chatUserName,
+        chatUserId : state.chatUser.chatUserId,
+        chatRoomId : state.chatUser.chatRoomId
     }
 }
 

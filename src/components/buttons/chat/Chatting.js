@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { connect, useDispatch } from 'react-redux';
 import styled from 'styled-components'; 
+import { chatModalOn, loginModalOn, setChatUser } from '../../../_actions/userAction';
 import { GlobalStyles } from './globalStyles';
-import Modal from './Modal';
+import Modal from './ChatModal';
 
 const Container = styled.div`
   display: flex;
@@ -15,22 +17,32 @@ const Button = styled.button`
   font-size: 24px; 
 `;
 
-function Chatting() {
-    const [showModal, setShowModal] = useState(false)
+function Chatting({summonerName, memberId, duoId, isAuth}) {
+    const dispatch = useDispatch();
+
     const openModal = () => {
-        setShowModal(prev=>!prev)
+        if(isAuth){
+            dispatch(setChatUser(summonerName, memberId, duoId));
+            dispatch(chatModalOn());
+        } else {
+            dispatch(loginModalOn());
+        }
     };
 
     return (
-        <>
-            <Container>
-                <Button onClick={openModal}><img src={'/images/buttons/kakaologo2.png'} width="30px"/></Button> 
-                <Modal showModal={showModal} setShowModal={setShowModal} />
-                <GlobalStyles/>
-            </Container>
-        </>
+        <Container>
+            <Button onClick={openModal}><img src={'/images/buttons/kakaologo2.png'} width="30px"/></Button> 
+            <GlobalStyles/>
+        </Container>
     );
 }
 
-export default Chatting;
+const mapStateToProps = state => {
+    return {
+        isAuth: state.auth.authorized,
+        chatModalIsOn : state.chatModal.isOn
+    }
+}
+
+export default connect(mapStateToProps)(Chatting);
 

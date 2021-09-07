@@ -1,33 +1,60 @@
-import React, { useState, useCallback } from 'react'; 
+import React, { useState, useEffect } from 'react'; 
+import Stomp from 'stompjs'
+import SockJS from 'sockjs-client';
 import './MessageInsert.scss';
+import { API_DOMAIN } from '../../../../utils/Env';
+import { connect } from 'react-redux';
 
-const MessageInsert = ({ onInsert }) => {
-  const [value, setValue] = useState('');
+const memberId = localStorage.getItem("memberId");
 
-  const onChange = useCallback(e => {
-    setValue(e.target.value);
-  }, []);
+const MessageInsert = ({ onInsert, chatUserId }) => {
+    const [message, setMessage] = useState("");
+    const sock = new SockJS(`${API_DOMAIN}/websocket-chat`);
+    const client = Stomp.over(sock);
 
-  const onSubmit = useCallback(
-    e => {
-      onInsert(value);
-      setValue(''); // value 값 초기화
+    useEffect(() => {
+        client.connect({}, ()=> {
+            client.subscribe(`/queue/user/${chatUserId}`, (event) => {
+                    const result = JSON.parse(event.body);
+                    onInsert(result.message);
+                    setMessage('');
+                })
+            }
+        );
 
-      e.preventDefault();
-    },
-    [onInsert, value],
-  );
+        return () => client.disconnect();
+    }, [])
 
-  return (
-    <form className="MessageInsert" onSubmit={onSubmit}>
-      <input
-        placeholder="메세지를 입력해주세요."
-        value={value}
-        onChange={onChange}
-      />
-      <button type="submit">Send</button>
-    </form>
-  );
+    const onChange = (event => {
+        setMessage(event.currentTarget.value);
+    });
+
+    const onSubmit = (event => {
+        const payload = {
+            memberId: memberId,
+            roomId: chatUserId,
+            message: message
+        }
+        client.send('/app/user-all', {}, JSON.stringify(payload));
+        event.preventDefault();
+    });
+
+    return (
+        <form className="MessageInsert" onSubmit={onSubmit}>
+            <input
+                placeholder="메세지를 입력해주세요."
+                value={message}
+                onChange={onChange}
+            />
+            <button type="submit">Send</button>
+        </form>
+    );
 };
 
-export default MessageInsert;
+const mapStateToProps = state => {
+    return {
+        chatUserId : state.chatUser.chatUserId
+    }
+}
+
+export default connect(mapStateToProps)(MessageInsert);

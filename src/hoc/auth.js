@@ -28,8 +28,12 @@ export default function (SpectificComponent, option){
                 dispatch(authorized()).then(response => {
                     console.log("AuthenticationCheck=", response)
                     if(response.payload == 401){
-                        refresh().then(response => {
+                        refresh()
+                        .then(response => {
                             localStorage.setItem('token', response.data.token)
+                        })
+                        .catch(() => {
+                            props.history.push("/logout")
                         })
                     }
                 }); 

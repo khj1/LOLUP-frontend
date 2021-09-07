@@ -113,3 +113,24 @@ export function update() {
         type: "UPDATE"
     }
 }
+
+export function setChatUser(summonerName, memberId, duoId) {
+    return {
+        type: "SET",
+        chatUserName: summonerName,
+        chatUserId: memberId,
+        chatRoomId: duoId
+    }
+}
+
+export function chatModalOn() {
+    return {
+        type: "CHAT_MODAL_ON"
+    }
+}
+
+export function chatModalOff() {
+    return {
+        type: "CHAT_MODAL_OFF"
+    }
+} 

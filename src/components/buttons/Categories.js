@@ -1,7 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { initDuoData, setPosition } from '../../_actions/userAction';
+import { initDuoData, setPosition, setTier } from '../../_actions/userAction';
 import styled, { css } from 'styled-components';
+import { Select } from 'antd';
+
+const { Option } = Select;
 
 const categories = [
     {   
@@ -36,6 +39,49 @@ const categories = [
     }
 ];
 
+
+
+const Categories = (props) => {
+    const dispatch = useDispatch();
+    
+    const onSelect = (position) => {
+        dispatch(initDuoData());
+        dispatch(setPosition(position));
+    }
+
+    const handleChange = (value) => {
+        dispatch(setTier(value))
+    }
+    
+    return (
+        <CategoriesBlock>
+            <Select style={tierStyle} onChange={handleChange} defaultValue="ALL">
+                <Option value="ALL">전체티어</Option>
+                <Option value="IRON">아이언</Option>
+                <Option value="BRONZE">브론즈</Option>
+                <Option value="SILVER">실버</Option>
+                <Option value="GOLD">골드</Option>
+                <Option value="PLATINUM">플래티넘</Option>
+                <Option value="DIAMOND">다이아몬드</Option>
+                <Option value="MASTER">마스터</Option>
+                <Option value="GRANDMASTER">그랜드마스터</Option>
+                <Option value="CHALLENGER">챌린저</Option>
+            </Select>
+            {categories.map(category => (
+                <Category key={category.name} active={props.position === category.name} onClick={() => onSelect(category.name)}>
+                    <img src={"/images/position/"+ category.menu_img} width="30px"></img>
+                </Category>
+            ))}
+        </CategoriesBlock>
+    );
+}
+
+const tierStyle = {
+    width: "120px",
+    marginRight: "12px",
+    top: "6px"
+}
+
 const CategoriesBlock = styled.div`
     display: flex;
     padding-top: 120px;
@@ -66,24 +112,5 @@ const Category = styled.div`
         border-bottom: 2px solid #22b8cf;
     `}
 `;
-
-const Categories = (props) => {
-    const dispatch = useDispatch();
-    
-    const onSelect = (position) => {
-        dispatch(initDuoData());
-        dispatch(setPosition(position));
-    }
-    
-    return (
-        <CategoriesBlock>
-            {categories.map(category => (
-                <Category key={category.name} active={props.position === category.name} onClick={() => onSelect(category.name)}>
-                    <img src={"/images/position/"+ category.menu_img} width="30px"></img>
-                </Category>
-            ))}
-        </CategoriesBlock>
-    );
-}
 
 export default Categories;

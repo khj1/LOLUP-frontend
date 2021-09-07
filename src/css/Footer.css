@@ -1,13 +1,17 @@
-.element {
-  /* 재수정 */
-  position: sticky;
+.footer {
+  bottom: 0; left: 0; right: 0;
   width: 100%;
-  margin-top: 5em;
-  padding-top: 0.1em;
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-  background-color: #f5df4d;
-  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.05);
-  z-index: 9999 !important;
+  color: gray;
+  margin-top: 100px;
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-bottom: 30px;
+  font-size: 12px;
+  background-color: white;
+  border-top: 1.5px solid #ECECEC;
+}
+
+.wrapper > span {
+  font-size:  14px;
+  font-weight: bold;
 }
