@@ -1,14 +1,43 @@
-import React, {useRef, useEffect, useCallback} from 'react'; 
+import React, {useCallback} from 'react'; 
 import styled from 'styled-components';
 import {MdClose} from 'react-icons/md';    
-import MessageForm from './SendMessage/MessageForm'; 
-import TestApp from './history/TestApp';
+import ChatBody from './history/ChatBody';
 import { connect } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { chatModalOff } from '../../../_actions/userAction';
-import SockJS from 'sockjs-client';
-import Stomp from 'stompjs'
-import { API_DOMAIN } from '../../../utils/Env';
+import '../../../css/ChatModal.css';
+
+export const ChatModal = ({chatModalIsOn, chatUserName}) => {
+    const dispatch = useDispatch();
+
+    const closeModal = () => {
+        dispatch(chatModalOff());
+    };
+
+    const keyPress = useCallback(event => {
+        if(event.keyCode==='Escape' && chatModalIsOn) {
+            dispatch(chatModalOff)
+        }   
+    });
+
+    return (
+        <>
+            <Background > 
+                <ModalWrapper> 
+                    <ModalHeader>
+                        <span className="chatHeaderText">
+                            {chatUserName ? `${chatUserName}님과의 채팅` : "나에게 온 채팅"}
+                        </span>
+                    </ModalHeader>
+                    <ModalContent>     
+                        <ChatBody />
+                    </ModalContent> 
+                    <CloseModalButton aria-label='Close modal' onClick={closeModal}/>
+                </ModalWrapper>
+            </Background>
+        </>
+    );
+}
 
 const Background = styled.div`
     width: 100%;
@@ -22,7 +51,7 @@ const Background = styled.div`
 const ModalWrapper = styled.div`
     transform: translate(-20%, -50%); 
     right: 0;
-    top: 630px;
+    top: 590px;
     width: 480px;
     height: fit-content;
     box-shadow: 0 5px 16px rgba(0, 0, 0, 0.03);
@@ -43,7 +72,7 @@ const ModalHeader = styled.div`
     align-items: center;
     line-height: 5;
     color: #141414;
-    background: #F2F5F8;
+    background: #4C5E70;
     border: 1px;
     border-color:white;
     word-break:break-all;
@@ -71,41 +100,14 @@ const ModalFooter = styled.div`
 const CloseModalButton = styled(MdClose)`
     cursor: pointer;
     position: absolute;
-    top: 20px;
+    color: white;
+    top: 22px;
     right: 20px;
     width: 32px;
     height :32px;
     padding: 0;
     z-index: 10px;
 `;
-
-export const ChatModal = ({chatModalIsOn, chatUserName}) => {
-    const dispatch = useDispatch();
-
-    const closeModal = () => {
-        dispatch(chatModalOff());
-    };
-
-    const keyPress = useCallback(event => {
-        if(event.keyCode==='Escape' && chatModalIsOn) {
-            dispatch(chatModalOff)
-        }   
-    });
-
-    return (
-        <>
-            <Background > 
-                <ModalWrapper> 
-                    <ModalHeader>{chatUserName}님과의 채팅</ModalHeader>
-                    <ModalContent>     
-                        <TestApp />
-                    </ModalContent> 
-                    <CloseModalButton aria-label='Close modal' onClick={closeModal}/>
-                </ModalWrapper>
-            </Background>
-        </>
-    );
-}
 
 const mapStateToProps = state => {
     return {

@@ -9,8 +9,7 @@ function chatUser (state = initialState, action) {
         case "SET":
             return { ...state, 
                 chatUserName: action.chatUserName, 
-                chatUserId: action.chatUserId,
-                chatRoomId: action.chatRoomId
+                chatRoomId: action.chatUserId,
             };
 
         default:

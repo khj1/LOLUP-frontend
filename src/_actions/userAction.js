@@ -114,12 +114,12 @@ export function update() {
     }
 }
 
-export function setChatUser(summonerName, memberId, duoId) {
+export function setChatUser(summonerName, memberId, roomId) {
     return {
         type: "SET",
         chatUserName: summonerName,
         chatUserId: memberId,
-        chatRoomId: duoId
+        chatRoomId: roomId
     }
 }
 

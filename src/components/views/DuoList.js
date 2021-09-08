@@ -14,6 +14,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Scroll from "./Scroll";
+import ChatBtn from "../buttons/ChatBtn";
 
 import Moment from "react-moment";
 import 'moment/locale/ko';
@@ -65,7 +66,7 @@ function DuoList(props) {
         if( props.isAuth && localStorage.getItem("summonerName") === "") {
             dispatch(nameModalOn());
         }
-    }, [])
+    })
 
 
     const MomentDateChange = (value) => {
@@ -113,7 +114,7 @@ function DuoList(props) {
                             <StyledTableCell align="center" width="218.52px">한줄소개</StyledTableCell>
                             <StyledTableCell align="center">등록날짜</StyledTableCell>
                             <StyledTableCell align="center" width="130px"></StyledTableCell>
-                            <Scroll/>
+                            
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -164,6 +165,8 @@ function DuoList(props) {
                     </TableBody>
                 </Table> 
             </TableContainer>
+            <Scroll/>
+            <ChatBtn />
             { duoList.length >= 20 && totalCount > duoList.length ? <MoreDataBtn></MoreDataBtn> : null }
         </>
     );

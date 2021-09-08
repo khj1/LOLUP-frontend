@@ -45,9 +45,9 @@ function Header(props) {
     let loginOrLogout;
     if(props.isAuth){
         addDuoBtn =
-        <Button className="header_btn" variant="success" onClick={() => {popupAddModal()}}>
-            등록하기
-        </Button>;
+            <Button className="header_btn" variant="success" onClick={() => {popupAddModal()}}>
+                등록하기
+            </Button>;
 
         nameModalBtn = 
             <Button className="header_btn" variant="success" onClick={() => {popupNameModal()}}>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; 
+ import React, { useState, useEffect } from 'react'; 
 import Stomp from 'stompjs'
 import SockJS from 'sockjs-client';
 import './MessageInsert.scss';
@@ -7,23 +7,23 @@ import { connect } from 'react-redux';
 
 const memberId = localStorage.getItem("memberId");
 
-const MessageInsert = ({ onInsert, chatUserId }) => {
+const MessageInsert = ({ onInsert, chatRoomId }) => {
     const [message, setMessage] = useState("");
     const sock = new SockJS(`${API_DOMAIN}/websocket-chat`);
     const client = Stomp.over(sock);
 
     useEffect(() => {
         client.connect({}, ()=> {
-            client.subscribe(`/queue/user/${chatUserId}`, (event) => {
+            client.subscribe(`/queue/user/${chatRoomId}`, (event) => {
                     const result = JSON.parse(event.body);
-                    onInsert(result.message);
+                    onInsert(result);
                     setMessage('');
                 })
             }
         );
 
         return () => client.disconnect();
-    }, [])
+    }, [onInsert])
 
     const onChange = (event => {
         setMessage(event.currentTarget.value);
@@ -32,7 +32,7 @@ const MessageInsert = ({ onInsert, chatUserId }) => {
     const onSubmit = (event => {
         const payload = {
             memberId: memberId,
-            roomId: chatUserId,
+            roomId: chatRoomId,
             message: message
         }
         client.send('/app/user-all', {}, JSON.stringify(payload));
@@ -53,7 +53,7 @@ const MessageInsert = ({ onInsert, chatUserId }) => {
 
 const mapStateToProps = state => {
     return {
-        chatUserId : state.chatUser.chatUserId
+        chatRoomId : state.chatUser.chatRoomId
     }
 }
 
