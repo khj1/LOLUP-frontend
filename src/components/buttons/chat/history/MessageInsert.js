@@ -5,10 +5,10 @@ import './MessageInsert.scss';
 import { API_DOMAIN } from '../../../../utils/Env';
 import { connect } from 'react-redux';
 
-const memberId = localStorage.getItem("memberId");
 
 const MessageInsert = ({ onInsert, chatRoomId }) => {
     const [message, setMessage] = useState("");
+    const memberId = localStorage.getItem("memberId");
     const sock = new SockJS(`${API_DOMAIN}/websocket-chat`);
     const client = Stomp.over(sock);
 

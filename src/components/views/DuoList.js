@@ -166,7 +166,7 @@ function DuoList(props) {
                 </Table> 
             </TableContainer>
             <Scroll/>
-            <ChatBtn />
+            <ChatBtn memberId = {storedMemberId}/>
             { duoList.length >= 20 && totalCount > duoList.length ? <MoreDataBtn></MoreDataBtn> : null }
         </>
     );

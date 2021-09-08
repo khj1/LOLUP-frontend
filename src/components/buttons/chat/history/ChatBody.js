@@ -3,9 +3,9 @@ import MessageInsert from './MessageInsert';
 import MessageList from './MessageList';  
 import HistoryTemplate from './HistoryTemplate';
 
-const memberId = localStorage.getItem("memberId");
 
 const ChatBody = () => {
+    const memberId = localStorage.getItem("memberId");
     const [messages, setMessages] = useState([]);
 
     const onInsert = useCallback(result => {

@@ -25,7 +25,6 @@ function App() {
         
         <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/chat_test" component={ChatTest} />
         <Route exact path="/duo" component={Auth(Duo, null)} />
         <Route exact path="/logout" component={Auth(Logout, true)} />
         <Route path="/oauth2/login" component={Oauth2Handler} />

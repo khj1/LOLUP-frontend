@@ -1,21 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect, useDispatch } from 'react-redux';
 import styled from 'styled-components'; 
 import { chatModalOn, loginModalOn, setChatUser } from '../../../_actions/userAction';
 import { GlobalStyles } from './globalStyles';
-import Modal from './ChatModal';
 
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 
-const Button = styled.button`  
-  border: none;
-  background: none; 
-  font-size: 24px; 
-`;
 
 function Chatting({summonerName, memberId, duoId, isAuth}) {
     const dispatch = useDispatch();
@@ -36,6 +25,18 @@ function Chatting({summonerName, memberId, duoId, isAuth}) {
         </Container>
     );
 }
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Button = styled.button`  
+  border: none;
+  background: none; 
+  font-size: 24px; 
+`;
 
 const mapStateToProps = state => {
     return {

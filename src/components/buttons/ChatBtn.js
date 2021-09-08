@@ -1,11 +1,9 @@
-import { useState, useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux';
 import '../../css/ChatBtn.css';
 import { chatModalOff, chatModalOn, setChatUser } from '../../_actions/userAction';
 
-const memberId = localStorage.getItem("memberId");
 
-function ChatBtn({chatModalIsOn}) {
+function ChatBtn({ memberId, chatModalIsOn }) {
     const dispatch = useDispatch();
     const chatModalHandler = () => {
         if(chatModalIsOn){
