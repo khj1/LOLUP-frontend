@@ -1,12 +1,12 @@
 const initialState = {
     data: {},
-    value: 'ALL'
+    value: null
 };
 
 function position (state = initialState, action) {
     switch (action.type) {
         case "ALL":
-            return { ...state, value: action.type };
+            return { ...state, value: null };
         
         case "TOP":
             return { ...state, value: action.type };

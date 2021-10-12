@@ -1,15 +1,15 @@
 const initialState = {
     data: {},
-    section: 1
+    size: 20
 };
 
 function duoData (state = initialState, action) {
     switch (action.type) {
         case "GET":
-            return { ...state, section: state.section + 1};
+            return { ...state, size: state.size + 20};
 
         case "INIT":
-            return { ...state, section: 1};
+            return { ...state, size: 20};
 
         default:
             return state;

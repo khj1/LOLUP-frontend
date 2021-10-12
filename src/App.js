@@ -12,7 +12,6 @@ import "./App.css";
 import LoginModal from "./components/views/LoginModal";
 import NameModal from "./components/views/NameModal";
 import AddModal from "./components/views/AddModal";
-import ChatTest from "./utils/ChatTest";
 
 function App() {
   return (
@@ -24,10 +23,10 @@ function App() {
         <AddModal />
         
         <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/duo" component={Auth(Duo, null)} />
-        <Route exact path="/logout" component={Auth(Logout, true)} />
-        <Route path="/oauth2/login" component={Oauth2Handler} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/duo" component={Auth(Duo, null)} />
+          <Route exact path="/logout" component={Auth(Logout, true)} />
+          <Route path="/oauth2/login" component={Oauth2Handler} />
         </Switch>
 
         <Footer />
