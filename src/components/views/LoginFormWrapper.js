@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import FadeIn from "react-fade-in";
 import { useDispatch } from "react-redux";
 import "../../css/Login01.css";
 import { loginModalOff } from "../../_actions/userAction";
-import Login02 from "./Login02";
+import LoginForm from "./LoginForm";
 
-function Login01(){
+function LoginFormWrapper(){
     const dispatch = useDispatch();
     const closeLoginModal = () => {
         dispatch(loginModalOff());
@@ -14,10 +14,10 @@ function Login01(){
     return (
         <div className="loginContainer" onClick={() => closeLoginModal()}>
             <FadeIn delay="20" transitionDuration="400">
-                <Login02/>
+                <LoginForm/>
             </FadeIn>
         </div>
     );
 };
 
-export default Login01;
+export default LoginFormWrapper;

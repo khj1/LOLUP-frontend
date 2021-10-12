@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import '../../css/Scroll.css';
 
-function Scroll() {
+function TopBtn() {
 
     const [ScrollY, setScrollY] = useState(0);
     const [BtnStatus, setBtnStatus] = useState(false); // 버튼 상태
@@ -46,4 +46,4 @@ function Scroll() {
     );
 }
 
-export default Scroll;
+export default TopBtn;

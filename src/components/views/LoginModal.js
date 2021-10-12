@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import { connect } from 'react-redux';
-import Login01 from './Login01';
+import LoginFormWrapper from './LoginFormWrapper';
 
 function LoginModal(props) {
     return (
         <>
-            { props.loginModalisOn ? <Login01 /> : null }
+            { props.loginModalisOn ? <LoginFormWrapper /> : null }
         </>
     )
 }
