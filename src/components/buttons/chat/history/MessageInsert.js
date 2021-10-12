@@ -5,29 +5,48 @@ import './MessageInsert.scss';
 import { API_DOMAIN } from '../../../../utils/Env';
 import { connect } from 'react-redux';
 
+let sock;
+let client;
 
 const MessageInsert = ({ onInsert, chatRoomId }) => {
     const [message, setMessage] = useState("");
+    const [contents, setContents] = useState([]);
     const memberId = localStorage.getItem("memberId");
-    const sock = new SockJS(`${API_DOMAIN}/websocket-chat`);
-    const client = Stomp.over(sock);
 
     useEffect(() => {
+        sock = new SockJS(`${API_DOMAIN}/websocket-message`);
+        client = Stomp.over(sock);
         client.connect({}, ()=> {
-            client.subscribe(`/queue/user/${chatRoomId}`, (event) => {
-                    const result = JSON.parse(event.body);
-                    onInsert(result);
+            client.subscribe(`/queue/user/${chatRoomId}`, (data) => {
+                    makePayload(JSON.parse(data.body));
                     setMessage('');
                 })
             }
         );
+    }, []);
 
-        return () => client.disconnect();
-    }, [onInsert])
+    const makePayload = result => {
+        let isMyChat = checkIsMyChat(result.memberId);
 
-    const onChange = (event => {
+        const content = {
+            messageId: result.messageId,
+            message: result.message,
+            date: result.date,
+            isMyChat: isMyChat
+        };
+
+        console.log("contents", contents);
+        setContents((prev) => [...prev, content]);
+        onInsert((prev) => [...prev, content]);
+    };
+
+    const checkIsMyChat = id => {
+        return memberId == id;
+    }
+
+    const onChange = event => {
         setMessage(event.currentTarget.value);
-    });
+    };
 
     const onSubmit = (event => {
         const payload = {

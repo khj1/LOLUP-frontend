@@ -5,30 +5,15 @@ import HistoryTemplate from './HistoryTemplate';
 
 
 const ChatBody = () => {
-    const memberId = localStorage.getItem("memberId");
-    const [messages, setMessages] = useState([]);
+    const [contents, setContents] = useState([]);
 
-    const onInsert = useCallback(result => {
-        let isMyChat;
-        if(memberId == result.memberId){
-            isMyChat = true;
-        } else {
-            isMyChat = false;
-        }
-
-        const message = {
-            messageId: result.messageId,
-            message: result.message,
-            date: result.date,
-            isMyChat: isMyChat
-        };
-
-        setMessages([...messages, message]);
-    });
+    const onInsert = data => {
+        setContents(data);
+    };
 
     return (
         <HistoryTemplate>
-            <MessageList messages={messages} />
+            <MessageList messages={contents} />
             <MessageInsert onInsert={onInsert} />
         </HistoryTemplate>
     );
