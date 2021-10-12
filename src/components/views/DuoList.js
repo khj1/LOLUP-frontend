@@ -178,7 +178,7 @@ function DuoList(props) {
                 </Table> 
             </TableContainer>
             <TopBtn/>
-            <ChatBtn memberId = {storedMemberId}/>
+            { props.isAuth ? <ChatBtn memberId = {storedMemberId}/> : null }
             { hasMoreData ? <MoreDataBtn></MoreDataBtn> : null }
         </>
     );
