@@ -23,8 +23,7 @@ function App() {
         <AddModal />
         
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/duo" component={Auth(Duo, null)} />
+          <Route exact path="/" component={Auth(Duo, null)} />
           <Route exact path="/logout" component={Auth(Logout, true)} />
           <Route path="/oauth2/login" component={Oauth2Handler} />
         </Switch>
