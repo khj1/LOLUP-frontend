@@ -89,7 +89,7 @@ function DuoList(props) {
                 duoId: row.duoId,
                 memberId: row.memberId,
                 most: row.most3,
-                iconId: 'http://ddragon.leagueoflegends.com/cdn/11.16.1/img/profileicon/' + row.iconId + '.png',
+                iconId: 'http://ddragon.leagueoflegends.com/cdn/' + version + '/img/profileicon/' + row.iconId + '.png',
                 summonerName: row.summonerName,
                 opggLink: 'https://www.op.gg/summoner/userName=' + row.summonerName,
                 position: '/images/position/' + row.position + '.png',

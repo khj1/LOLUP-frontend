@@ -1,10 +1,8 @@
-import React, { Fragment } from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import { connect } from "react-redux";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./components/fragments/Header";
 import Footer from "./components/fragments/Footer";
 import Auth from './hoc/auth';
-import Home from "./components/views/Home";
 import Duo from "./components/views/Duo";
 import Logout from  "./components/views/Logout";
 import Oauth2Handler from "./components/views/Oauth2Handler";
@@ -23,9 +21,9 @@ function App() {
         <AddModal />
         
         <Switch>
-          <Route exact path="/" component={Auth(Duo, null)} />
           <Route exact path="/logout" component={Auth(Logout, true)} />
           <Route path="/oauth2/login" component={Oauth2Handler} />
+          <Route path="/**" component={Auth(Duo, null)} />
         </Switch>
 
         <Footer />

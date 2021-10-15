@@ -9,12 +9,12 @@ function Logout() {
     useEffect(() => {
         const memberId = localStorage.getItem("memberId");
         localStorage.removeItem("token");
+        localStorage.removeItem("memberId");
+        localStorage.removeItem("summonerName");
 
         axios.defaults.baseURL = API_DOMAIN;
         axios.delete(`/auth/${memberId}`).then(response => {
             console.log("logout result=", response.data.logout)
-            localStorage.removeItem("memberId");
-            localStorage.removeItem("summonerName");
         })
     }, []);
 
