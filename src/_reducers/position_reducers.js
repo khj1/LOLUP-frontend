@@ -5,7 +5,7 @@ const initialState = {
 
 function position (state = initialState, action) {
     switch (action.type) {
-        case "ALL":
+        case "ALL-POSITION":
             return { ...state, value: null };
         
         case "TOP":

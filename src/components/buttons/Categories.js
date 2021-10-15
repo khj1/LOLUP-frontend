@@ -8,7 +8,7 @@ const { Option } = Select;
 
 const categories = [
     {   
-        name: 'ALL',
+        name: 'ALL-POSITION',
         text: '전체라인', 
         menu_img : 'ALL.png' 
     },
@@ -55,8 +55,8 @@ const Categories = (props) => {
     
     return (
         <CategoriesBlock>
-            <Select style={tierStyle} onChange={handleChange} defaultValue="ALL">
-                <Option value="ALL">전체티어</Option>
+            <Select style={tierStyle} onChange={handleChange} defaultValue="ALL-TIER">
+                <Option value="ALL-TIER">전체티어</Option>
                 <Option value="IRON">아이언</Option>
                 <Option value="BRONZE">브론즈</Option>
                 <Option value="SILVER">실버</Option>

@@ -5,7 +5,7 @@ const initialState = {
 
 function tier (state = initialState, action) {
     switch (action.type) {
-        case "ALL":
+        case "ALL-TIER":
             return { ...state, value: null };
         
         case "IRON":
