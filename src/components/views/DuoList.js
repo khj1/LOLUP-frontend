@@ -32,8 +32,6 @@ function DuoList(props) {
     const dispatch = useDispatch();
     const [duoList, setDuoList] = useState();
     const [version, setVersion] = useState();
-    const [totalCount, setTotalCount] = useState(0);
-    const [pageable, setPageable] = useState();
     const [hasMoreData, setHasMoreData] = useState(false);
 
     const storedMemberId = localStorage.getItem("memberId");
@@ -51,12 +49,10 @@ function DuoList(props) {
         .then((result) => {
             console.log(result.data);
             console.log(result.data.pageable);
-            setTotalCount(result.data.totalCount);
             setVersion(result.data.version);
             setDuoList(result.data.data);
-            setPageable(result.data.pageable);
 
-            result.data.pageable.pageSize >= 20 && result.data.pageable.pageSize < totalCount ? setHasMoreData(true) : setHasMoreData(false)
+            result.data.pageable.pageSize < result.data.totalCount ? setHasMoreData(true) : setHasMoreData(false)
         }) 
     }
 
@@ -68,7 +64,7 @@ function DuoList(props) {
         }, 5000)
         
         return () => clearInterval(interval)
-    },[props.position, props.tier, props.section, props.update]);
+    },[props.position, props.tier, props.section, props.update, props.size]);
 
     useEffect(() => {
         if( props.isAuth && localStorage.getItem("summonerName") === "") {
