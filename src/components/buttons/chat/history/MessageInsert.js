@@ -18,6 +18,7 @@ const MessageInsert = ({ onInsert, chatRoomId }) => {
         client = Stomp.over(sock);
         client.connect({}, ()=> {
             client.subscribe(`/queue/user/${chatRoomId}`, (data) => {
+                    console.log("data", data);
                     makePayload(JSON.parse(data.body));
                     setMessage('');
                 })
@@ -35,7 +36,6 @@ const MessageInsert = ({ onInsert, chatRoomId }) => {
             isMyChat: isMyChat
         };
 
-        console.log("contents", contents);
         setContents((prev) => [...prev, content]);
         onInsert((prev) => [...prev, content]);
     };

@@ -6,10 +6,6 @@ import { authorized } from '../_actions/userAction';
 import { API_DOMAIN } from '../utils/Env';
 
 export default function (SpectificComponent, option){
-    // option
-        // null      => 아무나 출입 가능
-        // true      => 로그인한 유저만 출입 가능
-        // false     => 로그인한 유저는 출입 불가능
     function AuthenticationCheck(props) {
         
         const dispatch = useDispatch();
