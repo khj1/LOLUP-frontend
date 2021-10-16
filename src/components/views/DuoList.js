@@ -47,13 +47,18 @@ function DuoList(props) {
             }
         })
         .then((result) => {
-            console.log(result.data);
-            console.log(result.data.pageable);
             setVersion(result.data.version);
             setDuoList(result.data.data);
 
-            result.data.pageable.pageSize < result.data.totalCount ? setHasMoreData(true) : setHasMoreData(false)
+            console.log("data size = ", result.data.data.length);
+
+            moreDataCheck(result) ? setHasMoreData(true) : setHasMoreData(false)
         }) 
+    }
+
+    const moreDataCheck = result => {
+        return result.data.data.length == result.data.pageable.pageSize 
+                && result.data.pageable.pageSize < result.data.totalCount;
     }
 
     useEffect(() => {
